@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04714D792A54A26500B14B9C /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 04714D782A54A26500B14B9C /* SnapKit */; };
 		04D55E752A549C2400159886 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D55E742A549C2400159886 /* AppDelegate.swift */; };
 		04D55E772A549C2400159886 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D55E762A549C2400159886 /* SceneDelegate.swift */; };
 		04D55E792A549C2400159886 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D55E782A549C2400159886 /* ViewController.swift */; };
-		04D55E7C2A549C2400159886 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04D55E7A2A549C2400159886 /* Main.storyboard */; };
 		04D55E7F2A549C2400159886 /* Dodo_pizza.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04D55E7D2A549C2400159886 /* Dodo_pizza.xcdatamodeld */; };
 		04D55E812A549C2700159886 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04D55E802A549C2700159886 /* Assets.xcassets */; };
 		04D55E842A549C2700159886 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04D55E822A549C2700159886 /* LaunchScreen.storyboard */; };
@@ -21,7 +21,6 @@
 		04D55E742A549C2400159886 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04D55E762A549C2400159886 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		04D55E782A549C2400159886 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		04D55E7B2A549C2400159886 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		04D55E7E2A549C2400159886 /* Dodo_pizza.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Dodo_pizza.xcdatamodel; sourceTree = "<group>"; };
 		04D55E802A549C2700159886 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04D55E832A549C2700159886 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -33,6 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04714D792A54A26500B14B9C /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,7 +61,6 @@
 				04D55E742A549C2400159886 /* AppDelegate.swift */,
 				04D55E762A549C2400159886 /* SceneDelegate.swift */,
 				04D55E782A549C2400159886 /* ViewController.swift */,
-				04D55E7A2A549C2400159886 /* Main.storyboard */,
 				04D55E802A549C2700159886 /* Assets.xcassets */,
 				04D55E822A549C2700159886 /* LaunchScreen.storyboard */,
 				04D55E852A549C2700159886 /* Info.plist */,
@@ -86,6 +85,9 @@
 			dependencies = (
 			);
 			name = "Dodo pizza";
+			packageProductDependencies = (
+				04714D782A54A26500B14B9C /* SnapKit */,
+			);
 			productName = "Dodo pizza";
 			productReference = 04D55E712A549C2400159886 /* Dodo pizza.app */;
 			productType = "com.apple.product-type.application";
@@ -114,6 +116,9 @@
 				Base,
 			);
 			mainGroup = 04D55E682A549C2400159886;
+			packageReferences = (
+				04714D772A54A26500B14B9C /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 04D55E722A549C2400159886 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -130,7 +135,6 @@
 			files = (
 				04D55E842A549C2700159886 /* LaunchScreen.storyboard in Resources */,
 				04D55E812A549C2700159886 /* Assets.xcassets in Resources */,
-				04D55E7C2A549C2400159886 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,14 +155,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		04D55E7A2A549C2400159886 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				04D55E7B2A549C2400159886 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		04D55E822A549C2700159886 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -362,6 +358,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		04714D772A54A26500B14B9C /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		04714D782A54A26500B14B9C /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04714D772A54A26500B14B9C /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		04D55E7D2A549C2400159886 /* Dodo_pizza.xcdatamodeld */ = {
