@@ -8,13 +8,22 @@
 import UIKit
 import SnapKit
 
-final class ViewController: UIViewController {
+final class MenuScreenVC: UIViewController {
     
-    var tableView: UITableView = {
+    let productService = ProductService()
+    var products: [Product] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
+    private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .orange
         tableView.delegate = self
         tableView.dataSource = self
+        
+        tableView.register(ProductCell.self, forCellReuseIdentifier: ProductCell.reuseID)
         return tableView
     }()
 
@@ -23,10 +32,14 @@ final class ViewController: UIViewController {
         setupViews()
         setupConstraints()
     }
+    
+    private func fetchProducts() {
+        products = productService.fetchProducts()
+    }
 
 }
 
-extension ViewController {
+extension MenuScreenVC {
     private func setupViews() {
         view.addSubview(tableView)
     }
@@ -38,13 +51,16 @@ extension ViewController {
     }
 }
 
-extension ViewController: UITableViewDelegate, UITableViewDataSource {
+extension MenuScreenVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        products.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: ProductCell.reuseID, for: indexPath) as! ProductCell
+        let product = products[indexPath.row]
+        cell.update(product)
+        return cell
     }
 }
 
