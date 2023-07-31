@@ -18,11 +18,10 @@ final class MenuScreenVC: UIViewController {
     }
     
     private lazy var tableView: UITableView = {
-        let tableView = UITableView()
+        var tableView = UITableView()
         tableView.backgroundColor = .orange
         tableView.delegate = self
         tableView.dataSource = self
-        
         tableView.register(ProductCell.self, forCellReuseIdentifier: ProductCell.reuseID)
         return tableView
     }()
@@ -31,6 +30,7 @@ final class MenuScreenVC: UIViewController {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
+        fetchProducts()
     }
     
     private func fetchProducts() {
@@ -57,10 +57,14 @@ extension MenuScreenVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ProductCell.reuseID, for: indexPath) as! ProductCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ProductCell.reuseID, for: indexPath) as? ProductCell else {return UITableViewCell()}
         let product = products[indexPath.row]
         cell.update(product)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 

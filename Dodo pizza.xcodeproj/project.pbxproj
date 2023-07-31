@@ -17,6 +17,10 @@
 		04D55E7F2A549C2400159886 /* Dodo_pizza.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04D55E7D2A549C2400159886 /* Dodo_pizza.xcdatamodeld */; };
 		04D55E812A549C2700159886 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04D55E802A549C2700159886 /* Assets.xcassets */; };
 		04D55E842A549C2700159886 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04D55E822A549C2700159886 /* LaunchScreen.storyboard */; };
+		04FB509B2A7126960075133D /* NameLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FB509A2A7126960075133D /* NameLabel.swift */; };
+		04FBA1652A780039002C9B52 /* PriceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FBA1642A780039002C9B52 /* PriceButton.swift */; };
+		04FBA1672A780087002C9B52 /* DetailLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FBA1662A780087002C9B52 /* DetailLabel.swift */; };
+		04FBA1692A7804AB002C9B52 /* ProductImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FBA1682A7804AB002C9B52 /* ProductImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +35,10 @@
 		04D55E802A549C2700159886 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04D55E832A549C2700159886 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04D55E852A549C2700159886 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04FB509A2A7126960075133D /* NameLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameLabel.swift; sourceTree = "<group>"; };
+		04FBA1642A780039002C9B52 /* PriceButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceButton.swift; sourceTree = "<group>"; };
+		04FBA1662A780087002C9B52 /* DetailLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailLabel.swift; sourceTree = "<group>"; };
+		04FBA1682A7804AB002C9B52 /* ProductImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,10 +136,22 @@
 				04714D7A2A54B67400B14B9C /* Screens */,
 				04714D812A58363F00B14B9C /* Services */,
 				04714D822A58366300B14B9C /* Model */,
+				04FB50992A71267B0075133D /* Components */,
 				04714D7C2A54B6B300B14B9C /* Resources */,
 				04D55E7D2A549C2400159886 /* Dodo_pizza.xcdatamodeld */,
 			);
 			path = "Dodo pizza";
+			sourceTree = "<group>";
+		};
+		04FB50992A71267B0075133D /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				04FB509A2A7126960075133D /* NameLabel.swift */,
+				04FBA1662A780087002C9B52 /* DetailLabel.swift */,
+				04FBA1642A780039002C9B52 /* PriceButton.swift */,
+				04FBA1682A7804AB002C9B52 /* ProductImage.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,8 +231,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				04D55E792A549C2400159886 /* MenuScreenVC.swift in Sources */,
+				04FBA1692A7804AB002C9B52 /* ProductImage.swift in Sources */,
 				04D55E752A549C2400159886 /* AppDelegate.swift in Sources */,
 				04714D802A54B82900B14B9C /* ProductCell.swift in Sources */,
+				04FBA1652A780039002C9B52 /* PriceButton.swift in Sources */,
+				04FB509B2A7126960075133D /* NameLabel.swift in Sources */,
+				04FBA1672A780087002C9B52 /* DetailLabel.swift in Sources */,
 				04D55E7F2A549C2400159886 /* Dodo_pizza.xcdatamodeld in Sources */,
 				04D55E772A549C2400159886 /* SceneDelegate.swift in Sources */,
 				04714D862A5861FC00B14B9C /* ProductService.swift in Sources */,
