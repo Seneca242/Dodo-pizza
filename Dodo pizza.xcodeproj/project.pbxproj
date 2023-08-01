@@ -21,6 +21,7 @@
 		04FBA1652A780039002C9B52 /* PriceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FBA1642A780039002C9B52 /* PriceButton.swift */; };
 		04FBA1672A780087002C9B52 /* DetailLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FBA1662A780087002C9B52 /* DetailLabel.swift */; };
 		04FBA1692A7804AB002C9B52 /* ProductImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FBA1682A7804AB002C9B52 /* ProductImage.swift */; };
+		04FBA16B2A780688002C9B52 /* PizzaDescriptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FBA16A2A780688002C9B52 /* PizzaDescriptionVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		04FBA1642A780039002C9B52 /* PriceButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceButton.swift; sourceTree = "<group>"; };
 		04FBA1662A780087002C9B52 /* DetailLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailLabel.swift; sourceTree = "<group>"; };
 		04FBA1682A7804AB002C9B52 /* ProductImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductImage.swift; sourceTree = "<group>"; };
+		04FBA16A2A780688002C9B52 /* PizzaDescriptionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzaDescriptionVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				04D55E782A549C2400159886 /* MenuScreenVC.swift */,
+				04FBA16A2A780688002C9B52 /* PizzaDescriptionVC.swift */,
 				04714D7E2A54B7E700B14B9C /* Cells */,
 			);
 			path = Menu;
@@ -240,6 +243,7 @@
 				04D55E7F2A549C2400159886 /* Dodo_pizza.xcdatamodeld in Sources */,
 				04D55E772A549C2400159886 /* SceneDelegate.swift in Sources */,
 				04714D862A5861FC00B14B9C /* ProductService.swift in Sources */,
+				04FBA16B2A780688002C9B52 /* PizzaDescriptionVC.swift in Sources */,
 				04714D842A58368000B14B9C /* Product.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

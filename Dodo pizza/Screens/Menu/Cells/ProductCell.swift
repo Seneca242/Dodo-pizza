@@ -24,10 +24,10 @@ final class ProductCell: UITableViewCell {
         return stackView
     }()
     
-    var nameLabel = NameLabel()
-    var priceButton = PriceButton()
-    var detailLabel = DetailLabel()
-    var productImageView = ProductImageView()
+    let nameLabel = NameLabel()
+    let priceButton = PriceButton()
+    let detailLabel = DetailLabel()
+    let productImageView = ProductImageView()
     
 //    var nameLabel: UILabel = {
 //        let label = UILabel()
@@ -69,6 +69,7 @@ final class ProductCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
         setupConstraints()
+        productImageView.widthMultiplier = 0.4
     }
     
     required init?(coder: NSCoder) {

@@ -65,6 +65,10 @@ extension MenuScreenVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let pizzaDescriptionVC = PizzaDescriptionVC()
+        let pizza = products[indexPath.row]
+        pizzaDescriptionVC.pizza = pizza
+        present(pizzaDescriptionVC, animated: true)
     }
 }
 

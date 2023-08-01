@@ -18,7 +18,7 @@ class PriceButton: UIButton {
     }
     
     func commonInit() {
-        self.setTitle("от 469 руб", for: .normal)
+//        self.setTitle("от 469 руб", for: .normal)
         self.backgroundColor = .orange.withAlphaComponent(0.1)
         self.layer.cornerRadius = 20
         self.setTitleColor(.brown, for: .normal)

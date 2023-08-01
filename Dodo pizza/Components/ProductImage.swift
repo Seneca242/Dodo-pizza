@@ -9,6 +9,12 @@ import UIKit
 
 class ProductImageView: UIImageView {
     
+    var widthMultiplier: CGFloat = 0 {
+        didSet {
+            updateConstraintsForWidthMultiplier()
+        }
+    }
+    
     init() {
         super.init(image: .none)
         commonInit()
@@ -20,9 +26,18 @@ class ProductImageView: UIImageView {
     
     func commonInit() {
         self.image = UIImage(named: "default")
-        self.contentMode = .scaleAspectFill
+        self.contentMode = .scaleAspectFit
+//        let width = UIScreen.main.bounds.width
+//        self.heightAnchor.constraint(equalToConstant: widthMultiplier * width).isActive = true
+//        self.widthAnchor.constraint(equalToConstant: widthMultiplier * width).isActive = true
+    }
+    
+    private func updateConstraintsForWidthMultiplier() {
+        guard let superview = superview else { return }
         let width = UIScreen.main.bounds.width
-        self.heightAnchor.constraint(equalToConstant: 0.40 * width).isActive = true
-        self.widthAnchor.constraint(equalToConstant: 0.40 * width).isActive = true
+        NSLayoutConstraint.deactivate(self.constraints)
+        self.heightAnchor.constraint(equalToConstant: widthMultiplier * width).isActive = true
+        self.widthAnchor.constraint(equalToConstant: widthMultiplier * width).isActive = true
+        superview.layoutIfNeeded()
     }
 }
