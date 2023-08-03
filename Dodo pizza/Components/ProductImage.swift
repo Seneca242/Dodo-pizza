@@ -7,6 +7,12 @@
 
 import UIKit
 
+enum ProductImageStyle {
+    case menu
+    case detail
+    case cart
+}
+
 class ProductImageView: UIImageView {
     
     var widthMultiplier: CGFloat = 0 {
@@ -15,21 +21,36 @@ class ProductImageView: UIImageView {
         }
     }
     
-    init() {
+    init(style: ProductImageStyle) {
         super.init(image: .none)
-        commonInit()
+        commonInit(style: style)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func commonInit() {
+    func commonInit(style: ProductImageStyle) {
+        
+        let width = UIScreen.main.bounds.width
+        var rate: CGFloat = 0
+       
+        
+        switch style {
+            
+        case .menu:
+            rate = 0.4
+        case .detail:
+            rate = 0.8
+        case .cart:
+            rate = 0.6
+        }
+        
+        self.heightAnchor.constraint(equalToConstant: rate * width).isActive = true
+        self.widthAnchor.constraint(equalToConstant: rate * width).isActive = true
+        
         self.image = UIImage(named: "default")
         self.contentMode = .scaleAspectFit
-//        let width = UIScreen.main.bounds.width
-//        self.heightAnchor.constraint(equalToConstant: widthMultiplier * width).isActive = true
-//        self.widthAnchor.constraint(equalToConstant: widthMultiplier * width).isActive = true
     }
     
     private func updateConstraintsForWidthMultiplier() {

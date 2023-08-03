@@ -27,43 +27,7 @@ final class ProductCell: UITableViewCell {
     let nameLabel = NameLabel()
     let priceButton = PriceButton()
     let detailLabel = DetailLabel()
-    let productImageView = ProductImageView()
-    
-//    var nameLabel: UILabel = {
-//        let label = UILabel()
-//        label.text = "Пепперони"
-//        label.font = UIFont.boldSystemFont(ofSize: 20)
-//        return label
-//    }()
-    
-//    var detailLabel: UILabel = {
-//        let label = UILabel()
-//        label.text = "Тесто, Цыпленок, моцарелла, томатный соус"
-//        label.textColor = .darkGray
-//        label.numberOfLines = 0
-//        label.font = UIFont.boldSystemFont(ofSize: 15)
-//        return label
-//    }()
-    
-//    private var priceButton: UIButton = {
-//        let button = UIButton()
-//        button.setTitle("от 469 руб", for: .normal)
-//        button.backgroundColor = .orange.withAlphaComponent(0.1)
-//        button.layer.cornerRadius = 20
-//        button.setTitleColor(.brown, for: .normal)
-//        button.configuration?.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10)
-//        return button
-//    }()
-    
-//    private var productImageView: UIImageView = {
-//        let imageView = UIImageView()
-//        imageView.image = UIImage(named: "default")
-//        imageView.contentMode = .scaleAspectFill
-//        let width = UIScreen.main.bounds.width
-//        imageView.heightAnchor.constraint(equalToConstant: 0.40 * width).isActive = true
-//        imageView.widthAnchor.constraint(equalToConstant: 0.40 * width).isActive = true
-//        return imageView
-//    }()
+    let productImageView = ProductImageView(style: .menu)
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
