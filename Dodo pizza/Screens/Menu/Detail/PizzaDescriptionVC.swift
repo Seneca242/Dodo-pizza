@@ -13,7 +13,6 @@ class PizzaDescriptionVC: UIViewController {
     var pizza: Product?
     
     let nameLabel = NameLabel()
-    let priceButton = PriceButton()
     let detailLabel = DetailLabel()
     let productImageView = ProductImageView(style: .detail)
     
@@ -23,19 +22,26 @@ class PizzaDescriptionVC: UIViewController {
         super.viewDidLoad()
         setupConstraints()
         view.backgroundColor = .white
+        orderButtonView.backgroundColor = UIColor(
+            red: 248/255,
+            green: 248/255,
+            blue: 255/255,
+            alpha: 1
+        )
         
         guard let pizza = pizza else {
             print("Error: Pizza not set!")
             return
         }
-        
+        orderButtonView.orderButton.setTitle(
+            "В корзину за \(String(describing: pizza.price)) ₽", for: .normal
+        )
         update(pizza)
     }
 
     func update(_ product: Product) {
         nameLabel.text = product.name
         detailLabel.text = product.detail
-        priceButton.setTitle("\(product.price) р", for: .normal)
         productImageView.image = UIImage(named: product.image)
     }
 
@@ -46,7 +52,7 @@ class PizzaDescriptionVC: UIViewController {
     }
     
     private func setupConstraints() {
-        addSubviews(subviews: productImageView, nameLabel, detailLabel, priceButton, orderButtonView)
+        addSubviews(subviews: productImageView, nameLabel, detailLabel, orderButtonView)
         
         productImageView.snp.makeConstraints { make in
             make.top.equalTo(view.snp.top).offset(8)
@@ -68,8 +74,11 @@ class PizzaDescriptionVC: UIViewController {
         }
         
         orderButtonView.snp.makeConstraints { make in
-            make.leading.trailing.equalTo(view).inset(16)
-            make.bottom.equalTo(view).offset(16)
+//            make.leading.trailing.equalTo(view).inset(0)
+//            make.bottom.equalTo(view).inset(30)
+            make.height.equalTo(100)
+            make.leading.trailing.equalTo(view)
+            make.bottom.equalTo(view)
         }
     }
 }

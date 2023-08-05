@@ -22,6 +22,10 @@ class PriceButton: UIButton {
         self.backgroundColor = .orange.withAlphaComponent(0.1)
         self.layer.cornerRadius = 20
         self.setTitleColor(.brown, for: .normal)
-        self.configuration?.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10)
+        
+//        self.contentEdgeInsets = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
+        var config = self.configuration ?? UIButton.Configuration.plain()
+        config.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10)
+        self.configuration = config
     }
 }

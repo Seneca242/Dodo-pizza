@@ -12,9 +12,10 @@ class OrderButtonView: UIView {
     
     var orderButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .red
-        button.setTitle("300 р", for: .normal)
-        button.layer.cornerRadius = 8
+        button.backgroundColor = .orange
+//        button.setTitle("В корзину за 300 ₽", for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+        button.layer.cornerRadius = 20
         return button
     }()
     
@@ -35,9 +36,10 @@ class OrderButtonView: UIView {
     
     private func setupConstraints() {
         orderButton.snp.makeConstraints { make in
-            make.width.equalTo(50)
-            make.height.equalTo(20)
-            make.top.bottom.leading.trailing.equalTo(self).inset(16)
+            make.width.equalToSuperview().inset(10)
+            make.height.equalTo(40)
+            make.centerX.equalTo(self)
+            make.top.equalToSuperview().offset(16)
         }
     }
     
