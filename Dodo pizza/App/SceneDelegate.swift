@@ -14,9 +14,67 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
+        
         window = UIWindow(windowScene: windowScene)
         window?.makeKeyAndVisible()
-        window?.rootViewController = MenuScreenVC()
+        
+        let menuScreenVC = MenuScreenVC()
+        let menuScreenNavVC = UINavigationController(rootViewController: menuScreenVC)
+        menuScreenNavVC.tabBarItem = .init(
+            title: "Меню",
+            image: UIImage(named: "tabbarMenuGrey"),
+            selectedImage: UIImage(named: "tabbarMenuOrange")
+        )
+        
+        let profileVC = ProfileViewController()
+        let profileNavVC = UINavigationController(rootViewController: profileVC)
+        profileNavVC.tabBarItem = .init(
+            title: "Профиль",
+            image: UIImage(named: "tabbarProfileGrey"),
+            selectedImage: UIImage(named: "tabbarProfileOrange")
+        )
+        
+        let contactsVC = ContactsViewController()
+        let contactsNavVC = UINavigationController(rootViewController: contactsVC)
+        contactsNavVC.tabBarItem = .init(
+            title: "Контакты",
+            image: UIImage(named: "tabbarContactsGrey"),
+            selectedImage: UIImage(named: "tabbarContactsOrange")
+        )
+        
+        let basketVC = BasketViewController()
+        let basketNavVC = UINavigationController(rootViewController: basketVC)
+        basketNavVC.tabBarItem = .init(
+            title: "Корзина",
+            image: UIImage(named: "tabbarBasketGrey"),
+            selectedImage: UIImage(named: "tabbarBasketOrange")
+        )
+        
+        
+        let tabbar = UITabBarController()
+        let appearance = UITabBarAppearance()
+        appearance.stackedLayoutAppearance.normal.titleTextAttributes = [
+            .foregroundColor: UIColor.black,
+            .font: UIFont.systemFont(ofSize: 12)
+        ]
+        appearance.backgroundColor = UIColor(
+            red: 228/255,
+            green: 226/255,
+            blue: 226/255,
+            alpha: 1
+        )
+        
+        tabbar.tabBar.standardAppearance = appearance
+        if #available(iOS 15.0, *) {
+            tabbar.tabBar.scrollEdgeAppearance = appearance
+        } else {
+            tabbar.tabBar.isTranslucent = true
+        }
+        tabbar.tabBar.tintColor = .red
+        tabbar.modalPresentationStyle = .fullScreen
+        tabbar.viewControllers = [menuScreenNavVC, profileNavVC, contactsNavVC, basketNavVC]
+        
+        window?.rootViewController = tabbar
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

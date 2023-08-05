@@ -19,7 +19,6 @@ final class MenuScreenVC: UIViewController {
     
     private lazy var tableView: UITableView = {
         var tableView = UITableView()
-        tableView.backgroundColor = .orange
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(ProductCell.self, forCellReuseIdentifier: ProductCell.reuseID)
@@ -36,6 +35,77 @@ final class MenuScreenVC: UIViewController {
     private func fetchProducts() {
         products = productService.fetchProducts()
     }
+    
+//    private func createTabbar() {
+//        let menuScreenVC = MenuScreenVC()
+//        let menuScreenNavVC = UINavigationController(rootViewController: menuScreenVC)
+//        
+//        let profileVC = ProfileViewController()
+//        let profileNavVC = UINavigationController(rootViewController: profileVC)
+//        
+//        let contactsVC = ContactsViewController()
+//        let contactsNavVC = UINavigationController(rootViewController: contactsVC)
+//        
+//        let basketVC = BasketViewController()
+//        let basketNavVC = UINavigationController(rootViewController: basketVC)
+//        
+//        
+//        let tabbar = UITabBarController()
+//        let appearance = UITabBarAppearance()
+//        appearance.stackedLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.black]
+//        appearance.backgroundColor = UIColor(
+//            red: 228/255,
+//            green: 226/255,
+//            blue: 226/255,
+//            alpha: 1
+//        )
+//        
+//        tabbar.tabBar.standardAppearance = appearance
+//        if #available(iOS 15.0, *) {
+//            tabbar.tabBar.scrollEdgeAppearance = appearance
+//        } else {
+//            tabbar.tabBar.isTranslucent = true
+//        }
+//        tabbar.tabBar.tintColor = .red
+////        tabbar.tabBar.unselectedItemTintColor = UIColor.black
+//        
+//        menuScreenVC.tabBarItem.title = "Меню"
+//        profileVC.tabBarItem.title = "Профиль"
+//        contactsVC.tabBarItem.title = "Контакты"
+//        basketVC.tabBarItem.title = "Корзина"
+//        
+////        menuScreenVC.tabBarItem = .init(
+////            title: "Меню",
+////            image: UIImage(named: "tabbarMenuGrey")?.withTintColor(.black) .withRenderingMode(.alwaysOriginal),
+////            selectedImage: UIImage(named: "tabbarMenuOrange")
+////        )
+////        
+//////        philosophersNavigationVC.tabBarItem.badgeColor = .white
+////        
+////        profileVC.tabBarItem = .init(
+////            title: "Профиль",
+////            image: UIImage(named: "tabbarProfileGrey")?.withTintColor(.black) .withRenderingMode(.alwaysOriginal),
+////            selectedImage: UIImage(named: "tabbarProfileOrange")
+////        )
+////        
+////        contactsVC.tabBarItem = .init(
+////            title: "Контакты",
+////            image: UIImage(named: "tabbarContactsGrey")?.withTintColor(.black) .withRenderingMode(.alwaysOriginal),
+////            selectedImage: UIImage(named: "tabbarContactsOrange")
+////        )
+////        
+////        basketVC.tabBarItem = .init(
+////            title: "Корзина",
+////            image: UIImage(named: "tabbarBasketGrey")?.withTintColor(.black) .withRenderingMode(.alwaysOriginal),
+////            selectedImage: UIImage(named: "tabbarBasketOrange")
+////        )
+////        
+//////        basketVC.tabBarItem.badgeColor = .white
+//        
+//        tabbar.modalPresentationStyle = .fullScreen
+//        tabbar.viewControllers = [menuScreenNavVC, profileNavVC, contactsNavVC, basketNavVC]
+//        present(tabbar, animated: true)
+//    }
 
 }
 
