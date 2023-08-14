@@ -12,7 +12,7 @@ class PizzaDescriptionVC: UIViewController {
     
     var pizza: Product?
     
-    let nameLabel = NameLabel()
+    let nameLabel = NameLabel(style: .menu)
     let detailLabel = DetailLabel()
     let productImageView = ProductImageView(style: .detail)
     

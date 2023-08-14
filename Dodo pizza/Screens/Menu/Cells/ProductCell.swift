@@ -24,8 +24,8 @@ final class ProductCell: UITableViewCell {
         return stackView
     }()
     
-    let nameLabel = NameLabel()
-    let priceButton = PriceButton()
+    let nameLabel = NameLabel(style: .menu)
+    let priceButton = PriceButton(style: .menu)
     let detailLabel = DetailLabel()
     let productImageView = ProductImageView(style: .menu)
 

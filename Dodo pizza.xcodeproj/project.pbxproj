@@ -15,8 +15,13 @@
 		04714D802A54B82900B14B9C /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04714D7F2A54B82900B14B9C /* ProductCell.swift */; };
 		04714D842A58368000B14B9C /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04714D832A58368000B14B9C /* Product.swift */; };
 		04714D862A5861FC00B14B9C /* ProductService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04714D852A5861FC00B14B9C /* ProductService.swift */; };
+		04B317C62A88C84100D05873 /* BannerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B317C52A88C84100D05873 /* BannerCollectionViewCell.swift */; };
 		04D193C52A826429008732FE /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D193C42A826429008732FE /* LaunchScreenViewController.swift */; };
 		04D193C82A826516008732FE /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D193C72A826516008732FE /* MainTabBarController.swift */; };
+		04D193CB2A839B59008732FE /* BannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D193CA2A839B59008732FE /* BannerCell.swift */; };
+		04D193CE2A851733008732FE /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D193CD2A851733008732FE /* SearchVC.swift */; };
+		04D193D22A853A56008732FE /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D193D12A853A56008732FE /* Banner.swift */; };
+		04D193D42A853ACF008732FE /* BannerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D193D32A853ACF008732FE /* BannerService.swift */; };
 		04D55E752A549C2400159886 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D55E742A549C2400159886 /* AppDelegate.swift */; };
 		04D55E772A549C2400159886 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D55E762A549C2400159886 /* SceneDelegate.swift */; };
 		04D55E792A549C2400159886 /* MenuScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D55E782A549C2400159886 /* MenuScreenVC.swift */; };
@@ -37,8 +42,13 @@
 		04714D7F2A54B82900B14B9C /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		04714D832A58368000B14B9C /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		04714D852A5861FC00B14B9C /* ProductService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductService.swift; sourceTree = "<group>"; };
+		04B317C52A88C84100D05873 /* BannerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCollectionViewCell.swift; sourceTree = "<group>"; };
 		04D193C42A826429008732FE /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		04D193C72A826516008732FE /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		04D193CA2A839B59008732FE /* BannerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCell.swift; sourceTree = "<group>"; };
+		04D193CD2A851733008732FE /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
+		04D193D12A853A56008732FE /* Banner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
+		04D193D32A853ACF008732FE /* BannerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerService.swift; sourceTree = "<group>"; };
 		04D55E712A549C2400159886 /* Dodo pizza.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dodo pizza.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04D55E742A549C2400159886 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04D55E762A549C2400159886 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -123,8 +133,9 @@
 			isa = PBXGroup;
 			children = (
 				04D55E782A549C2400159886 /* MenuScreenVC.swift */,
-				043BD4112A7A635100651079 /* Detail */,
+				04D193CC2A851706008732FE /* SearchVC */,
 				04714D7E2A54B7E700B14B9C /* Cells */,
+				043BD4112A7A635100651079 /* Detail */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -150,6 +161,8 @@
 		04714D7E2A54B7E700B14B9C /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				04D193CA2A839B59008732FE /* BannerCell.swift */,
+				04B317C52A88C84100D05873 /* BannerCollectionViewCell.swift */,
 				04714D7F2A54B82900B14B9C /* ProductCell.swift */,
 			);
 			path = Cells;
@@ -159,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				04714D852A5861FC00B14B9C /* ProductService.swift */,
+				04D193D32A853ACF008732FE /* BannerService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -167,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				04714D832A58368000B14B9C /* Product.swift */,
+				04D193D12A853A56008732FE /* Banner.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -185,6 +200,14 @@
 				04D193C72A826516008732FE /* MainTabBarController.swift */,
 			);
 			path = TabbarController;
+			sourceTree = "<group>";
+		};
+		04D193CC2A851706008732FE /* SearchVC */ = {
+			isa = PBXGroup;
+			children = (
+				04D193CD2A851733008732FE /* SearchVC.swift */,
+			);
+			path = SearchVC;
 			sourceTree = "<group>";
 		};
 		04D55E682A549C2400159886 = {
@@ -305,19 +328,24 @@
 			files = (
 				0409B3882A7C078A00FCBDE4 /* BasketViewController.swift in Sources */,
 				043BD40F2A7A5DE700651079 /* OrderButtonView.swift in Sources */,
+				04B317C62A88C84100D05873 /* BannerCollectionViewCell.swift in Sources */,
 				04D193C82A826516008732FE /* MainTabBarController.swift in Sources */,
 				04D55E792A549C2400159886 /* MenuScreenVC.swift in Sources */,
+				04D193CB2A839B59008732FE /* BannerCell.swift in Sources */,
 				0409B3862A7C068500FCBDE4 /* ProfileVC.swift in Sources */,
 				04D193C52A826429008732FE /* LaunchScreenViewController.swift in Sources */,
+				04D193D42A853ACF008732FE /* BannerService.swift in Sources */,
 				04FBA1692A7804AB002C9B52 /* ProductImage.swift in Sources */,
 				0409B38B2A7C07E100FCBDE4 /* ContactsViewController.swift in Sources */,
 				04D55E752A549C2400159886 /* AppDelegate.swift in Sources */,
 				04714D802A54B82900B14B9C /* ProductCell.swift in Sources */,
+				04D193D22A853A56008732FE /* Banner.swift in Sources */,
 				04FBA1652A780039002C9B52 /* PriceButton.swift in Sources */,
 				04FB509B2A7126960075133D /* NameLabel.swift in Sources */,
 				04FBA1672A780087002C9B52 /* DetailLabel.swift in Sources */,
 				04D55E7F2A549C2400159886 /* Dodo_pizza.xcdatamodeld in Sources */,
 				04D55E772A549C2400159886 /* SceneDelegate.swift in Sources */,
+				04D193CE2A851733008732FE /* SearchVC.swift in Sources */,
 				04714D862A5861FC00B14B9C /* ProductService.swift in Sources */,
 				04FBA16B2A780688002C9B52 /* PizzaDescriptionVC.swift in Sources */,
 				04714D842A58368000B14B9C /* Product.swift in Sources */,

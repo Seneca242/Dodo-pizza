@@ -7,17 +7,36 @@
 
 import UIKit
 
+enum PriceButtonStyle {
+    case menu
+    case detail
+    case cart
+}
+
 class PriceButton: UIButton {
-    init() {
+    init(style: PriceButtonStyle) {
         super.init(frame: .zero)
-        commonInit()
+        commonInit(style: style)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func commonInit() {
+    func commonInit(style: PriceButtonStyle) {
+        var rate: CGFloat = 0
+        
+        
+        switch style {
+            
+        case .menu:
+            rate = 20
+        case .detail:
+            rate = 10
+        case .cart:
+            rate = 8
+        }
+        self.titleLabel?.font = UIFont.systemFont(ofSize: rate)
 //        self.setTitle("от 469 руб", for: .normal)
         self.backgroundColor = .orange.withAlphaComponent(0.1)
         self.layer.cornerRadius = 20
