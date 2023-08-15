@@ -10,6 +10,17 @@ import SnapKit
 
 class BannerCollectionViewCell: UICollectionViewCell {
     
+    var verticalStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 15
+        stackView.alignment = .fill
+        
+        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 0)
+        stackView.isLayoutMarginsRelativeArrangement = true
+        return stackView
+    }()
+    
     static let reuseID = "BannerCollectionCell"
     
     let nameLabel = NameLabel(style: .detail)
@@ -37,31 +48,25 @@ class BannerCollectionViewCell: UICollectionViewCell {
 extension BannerCollectionViewCell {
     
     func setupViews() {
-        addSubview(nameLabel)
-        addSubview(priceButton)
-        addSubview(productImageView)
+        contentView.addSubview(productImageView)
+        contentView.addSubview(verticalStackView)
+        verticalStackView.addArrangedSubview(nameLabel)
+        verticalStackView.addArrangedSubview(priceButton)
     }
     
     func setupConstraints() {
+        
         productImageView.snp.makeConstraints { make in
-            make.left.equalToSuperview()
-            make.top.equalToSuperview()
-            make.bottom.equalToSuperview()
-            make.width.equalToSuperview().multipliedBy(0.3)
+            make.leading.equalToSuperview().offset(8)
+            make.width.equalTo(100)
+            make.height.equalToSuperview().dividedBy(1)
         }
         
-        nameLabel.snp.makeConstraints { make in
-            make.left.equalTo(productImageView.snp.right)
-            make.top.equalToSuperview()
-            make.right.equalToSuperview()
-            make.height.equalToSuperview().multipliedBy(0.5)
+        verticalStackView.snp.makeConstraints { make in
+            make.leading.equalTo(productImageView.snp.trailing).offset(8)
+            make.trailing.equalToSuperview().offset(-8)
+            make.height.equalTo(productImageView)
         }
         
-        priceButton.snp.makeConstraints { make in
-            make.left.equalTo(productImageView.snp.right)
-            make.top.equalTo(nameLabel.snp.bottom)
-            make.right.equalToSuperview()
-            make.bottom.equalToSuperview()
-        }
     }
 }

@@ -8,11 +8,12 @@
 import UIKit
 import SnapKit
 
-class BannerCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
+class BannerCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     static let reuseID = "BannerCell"
     
     let bannerService = BannerService()
+    private let sectionInserts = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
     
     var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -44,8 +45,8 @@ class BannerCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDat
     }
     
     func setupViews() {
-//        contentView.addSubview(collectionView)
-        addSubview(collectionView)
+        contentView.addSubview(collectionView)
+//        addSubview(collectionView)
     }
     
     func setupConstraints() {
@@ -69,7 +70,20 @@ class BannerCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height)
+        return CGSize(width: collectionView.bounds.height * 1.3, height: collectionView.bounds.height * 0.8)
+//        return CGSize(width: 150, height: 150)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        sectionInserts
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        10
     }
     
     private func fetchBanner() {

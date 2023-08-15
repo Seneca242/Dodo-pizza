@@ -31,6 +31,7 @@ final class MenuScreenVC: UIViewController {
         tableView.dataSource = self
         tableView.register(ProductCell.self, forCellReuseIdentifier: ProductCell.reuseID)
         tableView.register(BannerCell.self, forCellReuseIdentifier: BannerCell.reuseID)
+        tableView.separatorStyle = .none
         return tableView
     }()
 
@@ -74,6 +75,7 @@ final class MenuScreenVC: UIViewController {
         navBarAppearance.configureWithOpaqueBackground()
         navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
         navBarAppearance.backgroundColor = .white
+        navBarAppearance.shadowColor = nil
         navigationController?.navigationBar.standardAppearance = navBarAppearance
         navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
         navigationController?.navigationBar.tintColor = .black
@@ -96,6 +98,13 @@ extension MenuScreenVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
         return indexPath.section != 0
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            return 150
+        }
+        return UITableView.automaticDimension
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
