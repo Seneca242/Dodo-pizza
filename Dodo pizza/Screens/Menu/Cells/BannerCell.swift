@@ -70,7 +70,7 @@ class BannerCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.height * 1.3, height: collectionView.bounds.height * 0.8)
+        return CGSize(width: collectionView.bounds.height * 1.6, height: collectionView.bounds.height * 0.8)
 //        return CGSize(width: 150, height: 150)
     }
     

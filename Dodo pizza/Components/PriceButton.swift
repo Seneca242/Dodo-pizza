@@ -25,28 +25,25 @@ class PriceButton: UIButton {
     
     func commonInit(style: PriceButtonStyle) {
         var rate: CGFloat = 0
-        
-        
+
+
         switch style {
-            
+
         case .menu:
             rate = 20
         case .detail:
-            rate = 10
+            rate = 15
         case .cart:
-            rate = 8
+            rate = 10
         }
         self.titleLabel?.font = UIFont.systemFont(ofSize: rate)
 //        self.setTitle("от 469 руб", for: .normal)
         self.backgroundColor = .orange.withAlphaComponent(0.1)
-        self.layer.cornerRadius = 20
+        self.layer.cornerRadius = 14
         self.setTitleColor(.brown, for: .normal)
-        
+
         self.contentEdgeInsets = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
-        
-//        var config = self.configuration ?? UIButton.Configuration.plain()
-//        config.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10)
-//        self.configuration = config
-        
+
     }
+
 }

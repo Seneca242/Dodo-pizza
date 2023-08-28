@@ -13,10 +13,10 @@ class BannerCollectionViewCell: UICollectionViewCell {
     var verticalStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.spacing = 15
-        stackView.alignment = .fill
+        stackView.spacing = 0
+        stackView.alignment = .leading
         
-        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 0)
+        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 36, trailing: 0)
         stackView.isLayoutMarginsRelativeArrangement = true
         return stackView
     }()
@@ -24,11 +24,17 @@ class BannerCollectionViewCell: UICollectionViewCell {
     static let reuseID = "BannerCollectionCell"
     
     let nameLabel = NameLabel(style: .detail)
-    let priceButton = PriceButton(style: .cart)
+    let priceButton = PriceButton(style: .detail)
     let productImageView = ProductImageView(style: .menu)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        backgroundColor = UIColor(
+            red: 248/255,
+            green: 248/255,
+            blue: 255/255,
+            alpha: 1
+        )
         setupViews()
         setupConstraints()
     }
@@ -63,7 +69,7 @@ extension BannerCollectionViewCell {
         }
         
         verticalStackView.snp.makeConstraints { make in
-            make.leading.equalTo(productImageView.snp.trailing).offset(8)
+            make.leading.equalTo(productImageView.snp.trailing).offset(0)
             make.trailing.equalToSuperview().offset(-8)
             make.height.equalTo(productImageView)
         }

@@ -32,6 +32,8 @@
 		04FBA1672A780087002C9B52 /* DetailLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FBA1662A780087002C9B52 /* DetailLabel.swift */; };
 		04FBA1692A7804AB002C9B52 /* ProductImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FBA1682A7804AB002C9B52 /* ProductImage.swift */; };
 		04FBA16B2A780688002C9B52 /* PizzaDescriptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FBA16A2A780688002C9B52 /* PizzaDescriptionVC.swift */; };
+		04FD8E632A9CE3960062A8B0 /* CityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD8E622A9CE3960062A8B0 /* CityViewController.swift */; };
+		04FD8E662A9CF8A40062A8B0 /* CountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD8E652A9CF8A40062A8B0 /* CountryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +63,8 @@
 		04FBA1662A780087002C9B52 /* DetailLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailLabel.swift; sourceTree = "<group>"; };
 		04FBA1682A7804AB002C9B52 /* ProductImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductImage.swift; sourceTree = "<group>"; };
 		04FBA16A2A780688002C9B52 /* PizzaDescriptionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzaDescriptionVC.swift; sourceTree = "<group>"; };
+		04FD8E622A9CE3960062A8B0 /* CityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityViewController.swift; sourceTree = "<group>"; };
+		04FD8E652A9CF8A40062A8B0 /* CountryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +137,8 @@
 			isa = PBXGroup;
 			children = (
 				04D55E782A549C2400159886 /* MenuScreenVC.swift */,
+				04FD8E612A9CE3690062A8B0 /* City */,
+				04FD8E642A9CF8860062A8B0 /* Country */,
 				04D193CC2A851706008732FE /* SearchVC */,
 				04714D7E2A54B7E700B14B9C /* Cells */,
 				043BD4112A7A635100651079 /* Detail */,
@@ -251,6 +257,22 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		04FD8E612A9CE3690062A8B0 /* City */ = {
+			isa = PBXGroup;
+			children = (
+				04FD8E622A9CE3960062A8B0 /* CityViewController.swift */,
+			);
+			path = City;
+			sourceTree = "<group>";
+		};
+		04FD8E642A9CF8860062A8B0 /* Country */ = {
+			isa = PBXGroup;
+			children = (
+				04FD8E652A9CF8A40062A8B0 /* CountryViewController.swift */,
+			);
+			path = Country;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -329,6 +351,7 @@
 				0409B3882A7C078A00FCBDE4 /* BasketViewController.swift in Sources */,
 				043BD40F2A7A5DE700651079 /* OrderButtonView.swift in Sources */,
 				04B317C62A88C84100D05873 /* BannerCollectionViewCell.swift in Sources */,
+				04FD8E662A9CF8A40062A8B0 /* CountryViewController.swift in Sources */,
 				04D193C82A826516008732FE /* MainTabBarController.swift in Sources */,
 				04D55E792A549C2400159886 /* MenuScreenVC.swift in Sources */,
 				04D193CB2A839B59008732FE /* BannerCell.swift in Sources */,
@@ -337,6 +360,7 @@
 				04D193D42A853ACF008732FE /* BannerService.swift in Sources */,
 				04FBA1692A7804AB002C9B52 /* ProductImage.swift in Sources */,
 				0409B38B2A7C07E100FCBDE4 /* ContactsViewController.swift in Sources */,
+				04FD8E632A9CE3960062A8B0 /* CityViewController.swift in Sources */,
 				04D55E752A549C2400159886 /* AppDelegate.swift in Sources */,
 				04714D802A54B82900B14B9C /* ProductCell.swift in Sources */,
 				04D193D22A853A56008732FE /* Banner.swift in Sources */,

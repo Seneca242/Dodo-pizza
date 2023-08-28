@@ -11,19 +11,12 @@ import SnapKit
 final class MenuScreenVC: UIViewController {
 
     let productService = ProductService()
-//    let bannerService = BannerService()
     
     var products: [Product] = [] {
         didSet {
             tableView.reloadData()
         }
     }
-    
-//    var banners: [Banner] = [] {
-//        didSet {
-//            tableView.reloadData()
-//        }
-//    }
 
     private lazy var tableView: UITableView = {
         var tableView = UITableView()
@@ -40,9 +33,9 @@ final class MenuScreenVC: UIViewController {
         setupViews()
         setupConstraints()
         fetchProducts()
-//        fetchBanner()
         setupNavigationBar()
         setupSearchButton()
+        setupCityButton()
     }
 
     private func setupSearchButton() {
@@ -54,20 +47,47 @@ final class MenuScreenVC: UIViewController {
         )
         navigationItem.rightBarButtonItem = searchButton
     }
-
+    
+    private func setupCityButton() {
+        var configuration = UIButton.Configuration.plain()
+        configuration.title = "Москва"
+        
+        let imageConfig = UIImage.SymbolConfiguration(pointSize: 10, weight: .bold)
+        let dropdownImage = UIImage(
+            systemName: "chevron.down")?
+            .withConfiguration(imageConfig
+            )
+        
+        configuration.image = dropdownImage
+        configuration.imagePadding = 5
+        configuration.imagePlacement = .trailing
+        
+        let cityButton = UIButton(configuration: configuration)
+        cityButton.addTarget(
+            self,
+            action: #selector(cityButtonTapped),
+            for: .touchUpInside
+        )
+        
+        let barButtonItem = UIBarButtonItem(customView: cityButton)
+        navigationItem.leftBarButtonItem = barButtonItem
+    }
+    
     @objc private func searchButtonTapped() {
         let searchVC = SearchViewController()
         searchVC.products = products
         present(searchVC, animated: true)
     }
+    
+    @objc private func cityButtonTapped() {
+        let cityVC = CityViewController()
+        let navigationController = UINavigationController(rootViewController: cityVC)
+        present(navigationController, animated: true)
+    }
 
     private func fetchProducts() {
         products = productService.fetchProducts()
     }
-    
-//    private func fetchBanner() {
-//        banners = bannerService.fetchBanners()
-//    }
 
     private func setupNavigationBar() {
         navigationController?.navigationBar.prefersLargeTitles = false
@@ -137,3 +157,4 @@ extension MenuScreenVC: UITableViewDelegate, UITableViewDataSource {
         }
     }
 }
+

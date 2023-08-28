@@ -38,6 +38,6 @@ class NameLabel: UILabel {
             rate = 8
         }
         self.font = UIFont.boldSystemFont(ofSize: rate)
-        
+        self.numberOfLines = 0
     }
 }
