@@ -7,8 +7,6 @@
 
 import UIKit
 
-
-
 final class ProductCell: UITableViewCell {
     
     static let reuseID = "ProductCell"

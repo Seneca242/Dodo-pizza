@@ -15,12 +15,26 @@ class BannerCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDat
     let bannerService = BannerService()
     private let sectionInserts = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
     
+    private let headerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .clear
+        return view
+    }()
+    
+    private let headerLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Выгодно и вкусно"
+        label.font = UIFont.boldSystemFont(ofSize: 18)
+        return label
+    }()
+    
     var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.backgroundColor = .clear
+        collectionView.alwaysBounceHorizontal = true
         return collectionView
     }()
     
@@ -45,15 +59,33 @@ class BannerCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDat
     }
     
     func setupViews() {
+        contentView.addSubview(headerView)
+        headerView.addSubview(headerLabel)
         contentView.addSubview(collectionView)
-//        addSubview(collectionView)
+        //        addSubview(collectionView)
     }
     
     func setupConstraints() {
-        collectionView.snp.makeConstraints { make in
-//            make.edges.equalTo(contentView.safeAreaLayoutGuide)
-            make.edges.equalToSuperview()
+        headerView.snp.makeConstraints { make in
+            make.top.left.right.equalToSuperview()
+            make.height.equalTo(40)
         }
+        
+        headerLabel.snp.makeConstraints { make in
+            make.leading.equalTo(headerView).offset(16)
+            make.trailing.equalTo(headerView).offset(-16)
+            make.top.bottom.equalTo(headerView)
+        }
+        
+        collectionView.snp.makeConstraints { make in
+            make.top.equalTo(headerView.snp.bottom)
+            make.left.right.bottom.equalToSuperview()
+//            make.height.equalTo(150)
+        }
+        //        collectionView.snp.makeConstraints { make in
+        ////            make.edges.equalTo(contentView.safeAreaLayoutGuide)
+        //            make.edges.equalToSuperview()
+        //        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -70,8 +102,9 @@ class BannerCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.height * 1.6, height: collectionView.bounds.height * 0.8)
-//        return CGSize(width: 150, height: 150)
+        return CGSize(width: collectionView.bounds.height * 1.9, height: collectionView.bounds.height * 1.2)
+//        return CGSize(width: 150 * 1.6, height: 150 * 0.8)
+        //        return CGSize(width: 150, height: 150)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -88,5 +121,16 @@ class BannerCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDat
     
     private func fetchBanner() {
         banners = bannerService.fetchBanners()
+    }
+}
+
+extension BannerCell: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetX = scrollView.contentOffset.x
+        if offsetX < 0 {
+            headerLabel.transform = CGAffineTransform(translationX: -offsetX, y: 0)
+        } else {
+            headerLabel.transform = .identity
+        }
     }
 }
