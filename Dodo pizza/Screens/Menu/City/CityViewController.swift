@@ -53,10 +53,22 @@ class CityViewController: UIViewController {
         navigationItem.leftBarButtonItem = countryBarButtonItem
     }
     
+//    @objc private func chooseCountry() {
+//        let countryVC = CountryViewController()
+//        let navigationController = UINavigationController(rootViewController: countryVC)
+//        self.navigationController?.pushViewController(countryVC, animated: true)
+//    }
+    
     @objc private func chooseCountry() {
         let countryVC = CountryViewController()
-        let navigationController = UINavigationController(rootViewController: countryVC)
-        self.navigationController?.pushViewController(countryVC, animated: true)
+        guard let currentNavController = self.navigationController else { return }
+        
+        var viewControllers = currentNavController.viewControllers
+        viewControllers.insert(countryVC, at: viewControllers.count - 1)
+        
+        currentNavController.setViewControllers(viewControllers, animated: false)
+        currentNavController.popViewController(animated: true)
     }
+    
     
 }

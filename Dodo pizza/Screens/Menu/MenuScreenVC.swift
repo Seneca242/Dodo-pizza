@@ -8,6 +8,11 @@
 import UIKit
 import SnapKit
 
+enum MenuSection: Int, CaseIterable {
+    case banners = 0
+    case products = 1
+}
+
 final class MenuScreenVC: UIViewController {
 
     let productService = ProductService()
@@ -118,6 +123,7 @@ extension MenuScreenVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
         return indexPath.section != 0
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -128,32 +134,72 @@ extension MenuScreenVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        2
+        return MenuSection.allCases.count // 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        section == 1 ? products.count : 1
+        
+        if let section = MenuSection(rawValue: section) {
+            switch section {
+            case .banners:
+                return 1
+            case .products:
+                return products.count
+            }
+        }
+        
+        //section == 1 ? products.count : 1
+        return 0 //Int() == 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "BannerCell", for: indexPath) as? BannerCell else { return UITableViewCell() }
-            return cell
-        } else {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: ProductCell.reuseID, for: indexPath) as? ProductCell else { return UITableViewCell() }
-            let product = products[indexPath.row]
-            cell.update(product)
-            return cell
+        
+        if let section = MenuSection(rawValue: indexPath.section) {
+            switch section {
+                
+            case .banners:
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "BannerCell", for: indexPath) as? BannerCell else { return UITableViewCell() }
+                return cell
+            case .products:
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: ProductCell.reuseID, for: indexPath) as? ProductCell else { return UITableViewCell() }
+                let product = products[indexPath.row]
+                cell.update(product)
+                return cell
+            }
         }
+        return UITableViewCell()
+        
+        //        if indexPath.section == 0 {
+        //            guard let cell = tableView.dequeueReusableCell(withIdentifier: "BannerCell", for: indexPath) as? BannerCell else { return UITableViewCell() }
+        //            return cell
+        //        } else {
+        //            guard let cell = tableView.dequeueReusableCell(withIdentifier: ProductCell.reuseID, for: indexPath) as? ProductCell else { return UITableViewCell() }
+        //            let product = products[indexPath.row]
+        //            cell.update(product)
+        //            return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if indexPath.section == 1 {
-            let pizzaDescriptionVC = PizzaDescriptionVC()
-            let pizza = products[indexPath.row]
-            pizzaDescriptionVC.pizza = pizza
-            present(pizzaDescriptionVC, animated: true)
+        if let section = MenuSection(rawValue: indexPath.section) {
+            switch section {
+                
+            case .banners:
+                break
+            case .products:
+                let pizzaDescriptionVC = PizzaDescriptionVC()
+                let pizza = products[indexPath.row]
+                pizzaDescriptionVC.pizza = pizza
+                present(pizzaDescriptionVC, animated: true)
+            }
+            
+            //        tableView.deselectRow(at: indexPath, animated: true)
+            //        if indexPath.section == 1 {
+            //            let pizzaDescriptionVC = PizzaDescriptionVC()
+            //            let pizza = products[indexPath.row]
+            //            pizzaDescriptionVC.pizza = pizza
+            //            present(pizzaDescriptionVC, animated: true)
+            //        }
         }
     }
 }
