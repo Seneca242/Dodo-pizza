@@ -23,7 +23,7 @@ final class ProductCell: UITableViewCell {
     }()
     
     let nameLabel = NameLabel(style: .menu)
-    let priceButton = PriceButton(style: .menu)
+    let priceButton = OvalButton(style: .menu)
     let detailLabel = DetailLabel()
     let productImageView = ProductImageView(style: .menu)
 

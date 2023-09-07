@@ -24,7 +24,7 @@ class BannerCollectionViewCell: UICollectionViewCell {
     static let reuseID = "BannerCollectionCell"
     
     let nameLabel = NameLabel(style: .detail)
-    let priceButton = PriceButton(style: .detail)
+    let priceButton = OvalButton(style: .detail)
     let productImageView = ProductImageView(style: .menu)
     
     override init(frame: CGRect) {

@@ -13,7 +13,7 @@ enum PriceButtonStyle {
     case cart
 }
 
-class PriceButton: UIButton {
+class OvalButton: UIButton {
     init(style: PriceButtonStyle) {
         super.init(frame: .zero)
         commonInit(style: style)

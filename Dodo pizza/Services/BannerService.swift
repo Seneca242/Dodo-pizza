@@ -9,7 +9,7 @@ import Foundation
 
 class BannerService {
     private let banners: [Banner] = [
-       Banner(
+       Banner (
         image: "brusletiki",
         name: "Бруслетики",
         price: 230
