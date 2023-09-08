@@ -42,7 +42,7 @@ class OvalButton: UIButton {
         self.layer.cornerRadius = 14
         self.setTitleColor(.brown, for: .normal)
 
-        self.contentEdgeInsets = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
+        self.contentEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
 
     }
 

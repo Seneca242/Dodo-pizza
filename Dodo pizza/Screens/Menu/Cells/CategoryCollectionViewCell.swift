@@ -7,7 +7,7 @@
 
 import UIKit
 
-class QuickSelectButtonCell: UICollectionViewCell {
+class CategoryCollectionViewCell: UICollectionViewCell {
     
     static let reuseID = "QuickSelectButtonCell"
     
@@ -35,7 +35,7 @@ class QuickSelectButtonCell: UICollectionViewCell {
     
 }
 
-extension QuickSelectButtonCell {
+extension CategoryCollectionViewCell {
     
     func setupViews() {
         contentView.addSubview(categoryNameButton)
@@ -46,8 +46,8 @@ extension QuickSelectButtonCell {
         categoryNameButton.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.centerY.equalToSuperview()
-            make.width.equalTo(100)
-            make.height.equalToSuperview().dividedBy(1)
+            make.width.equalTo(85)
+            make.height.equalTo(30)
         }
     }
 }

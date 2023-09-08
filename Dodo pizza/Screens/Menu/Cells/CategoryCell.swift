@@ -36,7 +36,7 @@ class CategoryCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewD
         setupConstraints()
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(QuickSelectButtonCell.self, forCellWithReuseIdentifier: QuickSelectButtonCell.reuseID)
+        collectionView.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: CategoryCollectionViewCell.reuseID)
         fetchCategory()
     }
     
@@ -50,9 +50,7 @@ class CategoryCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewD
     
     func setupConstraints() {
         collectionView.snp.makeConstraints { make in
-            make.leading.equalTo(contentView).offset(16)
-            make.trailing.equalTo(contentView).offset(-16)
-            make.top.bottom.equalTo(contentView).offset(16)
+            make.edges.equalTo(contentView)
         }
     }
     
@@ -61,7 +59,7 @@ class CategoryCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: QuickSelectButtonCell.reuseID, for: indexPath) as? QuickSelectButtonCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.reuseID, for: indexPath) as? CategoryCollectionViewCell else {
             return UICollectionViewCell()
         }
         let category = categories[indexPath.row]
