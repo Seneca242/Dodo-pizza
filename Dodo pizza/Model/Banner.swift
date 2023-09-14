@@ -9,6 +9,6 @@ import Foundation
 
 struct Banner {
     var image: String
-    var name: String
-    var price: Int
+    var name: String?
+    var price: Int?
 }

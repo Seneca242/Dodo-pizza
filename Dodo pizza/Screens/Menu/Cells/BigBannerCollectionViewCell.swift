@@ -1,14 +1,15 @@
 //
-//  BannerCollectionViewCell.swift
+//  BigBannerCollectionViewCell.swift
 //  Dodo pizza
 //
-//  Created by Dmitry Dmitry on 13.08.2023.
+//  Created by Dmitry Dmitry on 14.09.2023.
 //
 
 import UIKit
+
 import SnapKit
 
-class BannerCollectionViewCell: UICollectionViewCell {
+class BigBannerCollectionViewCell: UICollectionViewCell {
     
     var verticalStackView: UIStackView = {
         let stackView = UIStackView()
@@ -21,10 +22,8 @@ class BannerCollectionViewCell: UICollectionViewCell {
         return stackView
     }()
     
-    static let reuseID = "BannerCollectionCell"
+    static let reuseID = "BigBannerCollectionCell"
     
-    let nameLabel = NameLabel(style: .detail)
-    let priceButton = OvalButton(style: .detail)
     let productImageView = ProductImageView(style: .menu)
     
     override init(frame: CGRect) {
@@ -43,21 +42,16 @@ class BannerCollectionViewCell: UICollectionViewCell {
     }
     
     func update(_ banner: Banner) {
-        nameLabel.text = banner.name
-        priceButton.setTitle("от \(banner.price ?? 0) ₽", for: .normal)
         productImageView.image = UIImage(named: banner.image)
     }
     
     
 }
 
-extension BannerCollectionViewCell {
+extension BigBannerCollectionViewCell {
     
     func setupViews() {
         contentView.addSubview(productImageView)
-        contentView.addSubview(verticalStackView)
-        verticalStackView.addArrangedSubview(nameLabel)
-        verticalStackView.addArrangedSubview(priceButton)
     }
     
     func setupConstraints() {
@@ -67,12 +61,6 @@ extension BannerCollectionViewCell {
             make.width.equalTo(100)
             make.height.equalToSuperview().dividedBy(1)
         }
-        
-        verticalStackView.snp.makeConstraints { make in
-            make.leading.equalTo(productImageView.snp.trailing).offset(0)
-            make.trailing.equalToSuperview().offset(-8)
-            make.height.equalTo(productImageView)
-        }
-        
     }
 }
+

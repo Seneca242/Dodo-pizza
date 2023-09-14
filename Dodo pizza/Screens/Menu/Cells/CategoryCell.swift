@@ -17,13 +17,14 @@ class CategoryCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewD
     var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
+        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.backgroundColor = .clear
         collectionView.alwaysBounceHorizontal = true
         return collectionView
     }()
-    
+
     var categories: [Category] = [] {
         didSet {
             collectionView.reloadData()
@@ -67,11 +68,11 @@ class CategoryCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewD
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.height * 1.9, height: collectionView.bounds.height * 1.2)
-//        return CGSize(width: 150 * 1.6, height: 150 * 0.8)
-        //        return CGSize(width: 150, height: 150)
-    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        return CGSize(width: collectionView.bounds.height * 1.9, height: collectionView.bounds.height * 1.2)
+////        return CGSize(width: 150 * 1.6, height: 150 * 0.8)
+//        //        return CGSize(width: 150, height: 150)
+//    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         sectionInserts

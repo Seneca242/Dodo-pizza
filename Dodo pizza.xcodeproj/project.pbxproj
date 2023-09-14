@@ -20,9 +20,12 @@
 		04714D842A58368000B14B9C /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04714D832A58368000B14B9C /* Product.swift */; };
 		04714D862A5861FC00B14B9C /* ProductService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04714D852A5861FC00B14B9C /* ProductService.swift */; };
 		04B317C62A88C84100D05873 /* BannerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B317C52A88C84100D05873 /* BannerCollectionViewCell.swift */; };
+		04C29F382AB39FA5003BB9B6 /* BigBannerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C29F372AB39FA5003BB9B6 /* BigBannerService.swift */; };
+		04C29F3A2AB3A1CF003BB9B6 /* BigBannerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C29F392AB3A1CF003BB9B6 /* BigBannerCollectionViewCell.swift */; };
+		04C29F3C2AB3A35A003BB9B6 /* BigBannerTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C29F3B2AB3A35A003BB9B6 /* BigBannerTableCell.swift */; };
 		04D193C52A826429008732FE /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D193C42A826429008732FE /* LaunchScreenViewController.swift */; };
 		04D193C82A826516008732FE /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D193C72A826516008732FE /* MainTabBarController.swift */; };
-		04D193CB2A839B59008732FE /* BannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D193CA2A839B59008732FE /* BannerCell.swift */; };
+		04D193CB2A839B59008732FE /* BannerTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D193CA2A839B59008732FE /* BannerTableCell.swift */; };
 		04D193CE2A851733008732FE /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D193CD2A851733008732FE /* SearchVC.swift */; };
 		04D193D22A853A56008732FE /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D193D12A853A56008732FE /* Banner.swift */; };
 		04D193D42A853ACF008732FE /* BannerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D193D32A853ACF008732FE /* BannerService.swift */; };
@@ -53,9 +56,12 @@
 		04714D832A58368000B14B9C /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		04714D852A5861FC00B14B9C /* ProductService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductService.swift; sourceTree = "<group>"; };
 		04B317C52A88C84100D05873 /* BannerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCollectionViewCell.swift; sourceTree = "<group>"; };
+		04C29F372AB39FA5003BB9B6 /* BigBannerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigBannerService.swift; sourceTree = "<group>"; };
+		04C29F392AB3A1CF003BB9B6 /* BigBannerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigBannerCollectionViewCell.swift; sourceTree = "<group>"; };
+		04C29F3B2AB3A35A003BB9B6 /* BigBannerTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigBannerTableCell.swift; sourceTree = "<group>"; };
 		04D193C42A826429008732FE /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		04D193C72A826516008732FE /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
-		04D193CA2A839B59008732FE /* BannerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCell.swift; sourceTree = "<group>"; };
+		04D193CA2A839B59008732FE /* BannerTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerTableCell.swift; sourceTree = "<group>"; };
 		04D193CD2A851733008732FE /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		04D193D12A853A56008732FE /* Banner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
 		04D193D32A853ACF008732FE /* BannerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerService.swift; sourceTree = "<group>"; };
@@ -175,8 +181,10 @@
 		04714D7E2A54B7E700B14B9C /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				04D193CA2A839B59008732FE /* BannerCell.swift */,
+				04D193CA2A839B59008732FE /* BannerTableCell.swift */,
+				04C29F3B2AB3A35A003BB9B6 /* BigBannerTableCell.swift */,
 				04B317C52A88C84100D05873 /* BannerCollectionViewCell.swift */,
+				04C29F392AB3A1CF003BB9B6 /* BigBannerCollectionViewCell.swift */,
 				04714D7F2A54B82900B14B9C /* ProductCell.swift */,
 				042EAAC02AAA48A500D75D06 /* CategoryCollectionViewCell.swift */,
 				042EAAC22AAA504B00D75D06 /* CategoryCell.swift */,
@@ -188,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				04714D852A5861FC00B14B9C /* ProductService.swift */,
+				04C29F372AB39FA5003BB9B6 /* BigBannerService.swift */,
 				04D193D32A853ACF008732FE /* BannerService.swift */,
 				042EAAC42AAA56C800D75D06 /* CategoryService.swift */,
 			);
@@ -362,12 +371,15 @@
 			files = (
 				0409B3882A7C078A00FCBDE4 /* BasketViewController.swift in Sources */,
 				043BD40F2A7A5DE700651079 /* OrderButtonView.swift in Sources */,
+				04C29F382AB39FA5003BB9B6 /* BigBannerService.swift in Sources */,
+				04C29F3C2AB3A35A003BB9B6 /* BigBannerTableCell.swift in Sources */,
 				04B317C62A88C84100D05873 /* BannerCollectionViewCell.swift in Sources */,
 				042EAAC52AAA56C800D75D06 /* CategoryService.swift in Sources */,
+				04C29F3A2AB3A1CF003BB9B6 /* BigBannerCollectionViewCell.swift in Sources */,
 				04FD8E662A9CF8A40062A8B0 /* CountryViewController.swift in Sources */,
 				04D193C82A826516008732FE /* MainTabBarController.swift in Sources */,
 				04D55E792A549C2400159886 /* MenuScreenVC.swift in Sources */,
-				04D193CB2A839B59008732FE /* BannerCell.swift in Sources */,
+				04D193CB2A839B59008732FE /* BannerTableCell.swift in Sources */,
 				0409B3862A7C068500FCBDE4 /* ProfileVC.swift in Sources */,
 				04D193C52A826429008732FE /* LaunchScreenViewController.swift in Sources */,
 				04D193D42A853ACF008732FE /* BannerService.swift in Sources */,

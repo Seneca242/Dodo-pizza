@@ -44,10 +44,14 @@ extension CategoryCollectionViewCell {
     func setupConstraints() {
         
         categoryNameButton.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview()
-            make.width.equalTo(85)
+            make.top.bottom.equalTo(contentView).inset(8)
+            make.left.right.equalTo(contentView).inset(4)
             make.height.equalTo(30)
+            make.width.greaterThanOrEqualTo(100)
+//            make.centerX.equalToSuperview()
+//            make.centerY.equalToSuperview()
+//            make.width.equalTo(85)
+//            make.height.equalTo(30)
         }
     }
 }
