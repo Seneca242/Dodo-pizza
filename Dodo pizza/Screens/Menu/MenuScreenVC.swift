@@ -9,10 +9,11 @@ import UIKit
 import SnapKit
 
 enum MenuSection: Int, CaseIterable {
-    case bigBanners = 0
-    case banners = 1
-    case categories = 2
-    case products = 3
+    case deliveryOrNot = 0
+    case bigBanners = 1
+    case banners = 2
+    case categories = 3
+    case products = 4
     
 }
 
@@ -31,6 +32,7 @@ final class MenuScreenVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(ProductCell.self, forCellReuseIdentifier: ProductCell.reuseID)
+        tableView.register(DeliveryOrNotTableCell.self, forCellReuseIdentifier: DeliveryOrNotTableCell.reuseID)
         tableView.register(BannerTableCell.self, forCellReuseIdentifier: BannerTableCell.reuseID)
         tableView.register(BigBannerTableCell.self, forCellReuseIdentifier: BigBannerTableCell.reuseID)
         tableView.register(CategoryCell.self, forCellReuseIdentifier: CategoryCell.reuseID)
@@ -133,13 +135,27 @@ extension MenuScreenVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section ==  0 {
+//        let width = tableView.frame.size.width
+//        let customWidth: CGFloat = 100
+//
+//        switch MenuSection(rawValue: indexPath.section) {
+//        case .bigBanners:
+//            return customWidth * 1.5
+//        case .banners:
+//            return 80
+//        default:
+//            return UITableView.automaticDimension
+//        }
+        switch MenuSection(rawValue: indexPath.section) {
+        case .bigBanners:
             return 150
+        case .banners:
+            return 150
+        case .categories:
+            return 40
+        default:
+            return UITableView.automaticDimension
         }
-        if  indexPath.section == 1  {
-            return 80
-        }
-        return UITableView.automaticDimension
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -150,6 +166,8 @@ extension MenuScreenVC: UITableViewDelegate, UITableViewDataSource {
         
         if let section = MenuSection(rawValue: section) {
             switch section {
+            case .deliveryOrNot:
+                return 1
             case .bigBanners:
                 return 1
             case .banners:
@@ -167,6 +185,19 @@ extension MenuScreenVC: UITableViewDelegate, UITableViewDataSource {
         
         if let section = MenuSection(rawValue: indexPath.section) {
             switch section {
+            case .deliveryOrNot:
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "DeliveryOrNotCell", for: indexPath) as? DeliveryOrNotTableCell else { return UITableViewCell() }
+                cell.segmentedControl.addTarget(
+                    self,
+                    action: #selector(segmentedControlChanged(_:)),
+                    for: .valueChanged
+                )
+                cell.deliveryAddressButton.addTarget(
+                    self,
+                    action: #selector(deliveryAddressButtonTapped),
+                    for: .touchUpInside
+                )
+                return cell
             case .bigBanners:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "BigBannerCell", for: indexPath) as? BigBannerTableCell else { return UITableViewCell() }
                 return cell
@@ -187,11 +218,31 @@ extension MenuScreenVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        tableView.deselectRow(at: indexPath, animated: true)
+//        if let section = MenuSection(rawValue: indexPath.section) {
+//            switch section {
+//            case .bigBanners:
+//                break
+//            case .banners:
+//                break
+//            case .categories:
+//                break
+//            case .products:
+//                let pizzaDescriptionVC = PizzaDescriptionVC()
+//                let pizza = products[indexPath.row]
+//                pizzaDescriptionVC.pizza = pizza
+//                present(pizzaDescriptionVC, animated: true)
+//            }
+//        }
         tableView.deselectRow(at: indexPath, animated: true)
         if let section = MenuSection(rawValue: indexPath.section) {
             switch section {
-            case .bigBanners:
+            case .deliveryOrNot:
                 break
+            case .bigBanners:
+                let storiesVC = StoriesViewController()
+                storiesVC.modalPresentationStyle = .fullScreen
+                self.present(storiesVC, animated: true)
             case .banners:
                 break
             case .categories:
@@ -204,5 +255,21 @@ extension MenuScreenVC: UITableViewDelegate, UITableViewDataSource {
             }
         }
     }
+    @objc func segmentedControlChanged(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 1 {
+            showEnterPhoneNumberVC()
+        }
+    }
+
+    @objc func deliveryAddressButtonTapped() {
+        showEnterPhoneNumberVC()
+    }
+    
+    func showEnterPhoneNumberVC() {
+        let enterPhoneNumberVC = EnterPhoneNumberVC()
+        let navigationController = UINavigationController(rootViewController: enterPhoneNumberVC)
+        present(navigationController, animated: true)
+    }
+
 }
 

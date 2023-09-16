@@ -50,7 +50,7 @@ class BigBannerService {
        )
     ]
     
-    func fetchBanners() -> [Banner] {
+    func fetchBigBanners() -> [Banner] {
         bigBanners
     }
 }

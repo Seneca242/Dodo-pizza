@@ -10,13 +10,26 @@ import SnapKit
 
 class BannerCollectionViewCell: UICollectionViewCell {
     
+    var mainStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.spacing = 8
+        stackView.alignment = .fill
+        stackView.distribution = .fillEqually
+        return stackView
+    }()
+    
     var verticalStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 0
         stackView.alignment = .leading
-        
-        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 36, trailing: 0)
+        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(
+            top: 20,
+            leading: 0,
+            bottom: 20,
+            trailing: 0
+        )
         stackView.isLayoutMarginsRelativeArrangement = true
         return stackView
     }()
@@ -38,6 +51,7 @@ class BannerCollectionViewCell: UICollectionViewCell {
         setupViews()
         setupConstraints()
     }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -47,32 +61,22 @@ class BannerCollectionViewCell: UICollectionViewCell {
         priceButton.setTitle("от \(banner.price ?? 0) ₽", for: .normal)
         productImageView.image = UIImage(named: banner.image)
     }
-    
-    
 }
 
 extension BannerCollectionViewCell {
     
     func setupViews() {
-        contentView.addSubview(productImageView)
-        contentView.addSubview(verticalStackView)
+        contentView.addSubview(mainStackView)
+        mainStackView.addArrangedSubview(productImageView)
+        mainStackView.addArrangedSubview(verticalStackView)
+        
         verticalStackView.addArrangedSubview(nameLabel)
         verticalStackView.addArrangedSubview(priceButton)
     }
     
     func setupConstraints() {
-        
-        productImageView.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(8)
-            make.width.equalTo(100)
-            make.height.equalToSuperview().dividedBy(1)
+        mainStackView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
-        
-        verticalStackView.snp.makeConstraints { make in
-            make.leading.equalTo(productImageView.snp.trailing).offset(0)
-            make.trailing.equalToSuperview().offset(-8)
-            make.height.equalTo(productImageView)
-        }
-        
     }
 }
