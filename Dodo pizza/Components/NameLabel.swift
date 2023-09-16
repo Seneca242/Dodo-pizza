@@ -19,6 +19,6 @@ class NameLabel: UILabel {
     }
     
     func commonInit() {
-        self.font = UIFont.boldSystemFont(ofSize: 20)
+        self.font = UIFont.boldSystemFont(ofSize: 21)
     }
 }
