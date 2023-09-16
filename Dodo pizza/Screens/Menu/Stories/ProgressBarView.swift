@@ -38,5 +38,4 @@ class ProgressBarView: UIView {
         path.addLine(to: CGPoint(x: self.bounds.width * progress, y: self.bounds.height / 2))
         progressLayer.path = path.cgPath
     }
-    
 }

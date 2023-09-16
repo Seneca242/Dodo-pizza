@@ -39,8 +39,8 @@ class StoriesViewController: UIViewController {
         let progressBarSpacing: CGFloat = 5.0
         let progressBarWidth = (view.bounds.width - CGFloat(stories.count - 1) * progressBarSpacing) / CGFloat(stories.count)
         
-        for i in 0..<stories.count {
-            let xPosition = CGFloat(i) * (progressBarWidth + progressBarSpacing)
+        for index in 0..<stories.count {
+            let xPosition = CGFloat(index) * (progressBarWidth + progressBarSpacing)
             let progressBarView = ProgressBarView(frame: CGRect(x: xPosition, y: 20, width: progressBarWidth, height: progressBarHeight))
             progressBarViews.append(progressBarView)
             view.addSubview(progressBarView)
@@ -62,20 +62,24 @@ class StoriesViewController: UIViewController {
         
         var timeInterval: TimeInterval = 0
         
-        progressTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { [weak self] (timer) in
-            guard let self = self else { return }
-            
-            timeInterval += 0.1
-            let progress = CGFloat(timeInterval) / 15.0
-            
-            self.progressBarViews[self.currentIndex].setProgress(progress)
-            
-            if timeInterval >= 15 {
-                self.currentIndex += 1
-                self.loadImage()
-                self.startProgressTimer()
+        progressTimer = Timer.scheduledTimer(
+            withTimeInterval: 0.1,
+            repeats: true,
+            block: { [weak self] (timer) in
+                guard let self = self else { return }
+                
+                timeInterval += 0.1
+                let progress = CGFloat(timeInterval) / 15.0
+                
+                self.progressBarViews[self.currentIndex].setProgress(progress)
+                
+                if timeInterval >= 15 {
+                    self.currentIndex += 1
+                    self.loadImage()
+                    self.startProgressTimer()
+                }
             }
-        })
+        )
     }
     
     override func viewWillDisappear(_ animated: Bool) {
