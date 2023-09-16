@@ -31,6 +31,8 @@ final class MenuScreenVC: UIViewController {
         setupViews()
         setupConstraints()
         fetchProducts()
+        
+        
     }
     
     private func fetchProducts() {
