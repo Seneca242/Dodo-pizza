@@ -218,22 +218,6 @@ extension MenuScreenVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        tableView.deselectRow(at: indexPath, animated: true)
-//        if let section = MenuSection(rawValue: indexPath.section) {
-//            switch section {
-//            case .bigBanners:
-//                break
-//            case .banners:
-//                break
-//            case .categories:
-//                break
-//            case .products:
-//                let pizzaDescriptionVC = PizzaDescriptionVC()
-//                let pizza = products[indexPath.row]
-//                pizzaDescriptionVC.pizza = pizza
-//                present(pizzaDescriptionVC, animated: true)
-//            }
-//        }
         tableView.deselectRow(at: indexPath, animated: true)
         if let section = MenuSection(rawValue: indexPath.section) {
             switch section {
