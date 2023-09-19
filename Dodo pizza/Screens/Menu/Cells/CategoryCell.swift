@@ -11,6 +11,8 @@ class CategoryCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewD
 
     static let reuseID = "CategoryCell"
     
+    var onCategoryCellTapped: ((Category) -> ())?
+    
     let categoryService = CategoryService()
     private let sectionInserts = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
     
@@ -65,6 +67,9 @@ class CategoryCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewD
         }
         let category = categories[indexPath.row]
         cell.update(category)
+        cell.onCategoryTapped = { category in
+            self.onCategoryCellTapped?(category)
+        }
         return cell
     }
     

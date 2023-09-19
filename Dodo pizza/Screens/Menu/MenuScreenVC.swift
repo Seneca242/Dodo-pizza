@@ -4,7 +4,6 @@
 //
 //  Created by Dmitry Dmitry on 04.07.2023.
 
-
 import UIKit
 import SnapKit
 
@@ -44,11 +43,11 @@ final class MenuScreenVC: UIViewController {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
-        fetchProducts()
         setupNavigationBar()
         setupSearchButton()
         setupCityButton()
         
+        fetchProducts()
     }
     
     private func setupSearchButton() {
@@ -85,23 +84,7 @@ final class MenuScreenVC: UIViewController {
         let barButtonItem = UIBarButtonItem(customView: cityButton)
         navigationItem.leftBarButtonItem = barButtonItem
     }
-    
-    @objc private func searchButtonTapped() {
-        let searchVC = SearchViewController()
-        searchVC.products = products
-        present(searchVC, animated: true)
-    }
-    
-    @objc private func cityButtonTapped() {
-        let cityVC = CityViewController()
-        let navigationController = UINavigationController(rootViewController: cityVC)
-        present(navigationController, animated: true)
-    }
-    
-    private func fetchProducts() {
-        products = productService.fetchProducts()
-    }
-    
+
     private func setupNavigationBar() {
         navigationController?.navigationBar.prefersLargeTitles = false
         let navBarAppearance = UINavigationBarAppearance()
@@ -127,7 +110,75 @@ extension MenuScreenVC {
     }
 }
 
-extension MenuScreenVC: UITableViewDelegate, UITableViewDataSource {
+//MARK: - Navigation
+extension MenuScreenVC {
+    func showEnterPhoneNumberScreen() {
+        let enterPhoneNumberVC = EnterPhoneNumberVC()
+        enterPhoneNumberVC.delegate = self
+        let navigationController = UINavigationController(rootViewController: enterPhoneNumberVC)
+        present(navigationController, animated: true)
+    }
+    
+    func showSearchScreen() {
+        let searchVC = SearchViewController()
+        searchVC.products = products
+        present(searchVC, animated: true)
+    }
+    
+    func showCityScreen() {
+        let cityVC = CityViewController()
+        let navigationController = UINavigationController(rootViewController: cityVC)
+        present(navigationController, animated: true)
+    }
+    
+    func showStoriesScreen() {
+        let storiesVC = StoriesViewController()
+        storiesVC.modalPresentationStyle = .fullScreen
+        self.present(storiesVC, animated: true)
+    }
+    
+    func showPizzaDescriptionScreen(_ pizza: Product) {
+        let pizzaDescriptionVC = PizzaDescriptionVC()
+        pizzaDescriptionVC.pizza = pizza
+        present(pizzaDescriptionVC, animated: true)
+    }
+}
+
+//MARK: - Business logic
+extension MenuScreenVC {
+    private func fetchProducts() {
+        products = productService.fetchProducts()
+    }
+}
+
+//MARK: - Event Handler (Actions)
+extension MenuScreenVC {
+    
+    func categoryCellTapped(_ category: Category) {
+        print(#line, category)
+    }
+    
+    @objc private func searchButtonTapped() {
+        showSearchScreen()
+    }
+    
+    @objc private func cityButtonTapped() {
+        showCityScreen()
+    }
+    
+    @objc func segmentedControlChanged(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 1 {
+            showEnterPhoneNumberScreen()
+        }
+    }
+
+    @objc func deliveryAddressButtonTapped() {
+        showEnterPhoneNumberScreen()
+    }
+}
+
+//MARK: - UITableViewDataSource
+extension MenuScreenVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
         return indexPath.section != 0
@@ -135,24 +186,13 @@ extension MenuScreenVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        let width = tableView.frame.size.width
-//        let customWidth: CGFloat = 100
-//
-//        switch MenuSection(rawValue: indexPath.section) {
-//        case .bigBanners:
-//            return customWidth * 1.5
-//        case .banners:
-//            return 80
-//        default:
-//            return UITableView.automaticDimension
-//        }
         switch MenuSection(rawValue: indexPath.section) {
         case .bigBanners:
             return 150
         case .banners:
-            return 150
+            return 200
         case .categories:
-            return 40
+            return 60
         default:
             return UITableView.automaticDimension
         }
@@ -206,6 +246,11 @@ extension MenuScreenVC: UITableViewDelegate, UITableViewDataSource {
                 return cell
             case .categories:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as? CategoryCell else { return UITableViewCell() }
+                
+                cell.onCategoryCellTapped = { category in
+                    self.categoryCellTapped(category)
+                }
+                
                 return cell
             case .products:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: ProductCell.reuseID, for: indexPath) as? ProductCell else { return UITableViewCell() }
@@ -216,7 +261,10 @@ extension MenuScreenVC: UITableViewDelegate, UITableViewDataSource {
         }
         return UITableViewCell()
     }
-    
+}
+
+//MARK: - UITableViewDelegate
+extension MenuScreenVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if let section = MenuSection(rawValue: indexPath.section) {
@@ -224,36 +272,26 @@ extension MenuScreenVC: UITableViewDelegate, UITableViewDataSource {
             case .deliveryOrNot:
                 break
             case .bigBanners:
-                let storiesVC = StoriesViewController()
-                storiesVC.modalPresentationStyle = .fullScreen
-                self.present(storiesVC, animated: true)
+//                showStoriesScreen()
+                break
             case .banners:
                 break
             case .categories:
                 break
             case .products:
-                let pizzaDescriptionVC = PizzaDescriptionVC()
                 let pizza = products[indexPath.row]
-                pizzaDescriptionVC.pizza = pizza
-                present(pizzaDescriptionVC, animated: true)
+                showPizzaDescriptionScreen(pizza)
             }
         }
     }
-    @objc func segmentedControlChanged(_ sender: UISegmentedControl) {
-        if sender.selectedSegmentIndex == 1 {
-            showEnterPhoneNumberVC()
+}
+
+extension MenuScreenVC: EnterPhoneNumberVCDelegate {
+    func enterPhoneNumberVCDidClose() {
+        if let cell = tableView.cellForRow(at: IndexPath(row: 0, section: MenuSection.deliveryOrNot.rawValue)) as? DeliveryOrNotTableCell {
+            cell.segmentedControl.selectedSegmentIndex = 0
         }
     }
-
-    @objc func deliveryAddressButtonTapped() {
-        showEnterPhoneNumberVC()
-    }
-    
-    func showEnterPhoneNumberVC() {
-        let enterPhoneNumberVC = EnterPhoneNumberVC()
-        let navigationController = UINavigationController(rootViewController: enterPhoneNumberVC)
-        present(navigationController, animated: true)
-    }
-
 }
+
 

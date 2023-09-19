@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol EnterPhoneNumberVCDelegate: AnyObject {
+    func enterPhoneNumberVCDidClose()
+}
+
 class EnterPhoneNumberVC: UIViewController {
+    
+    weak var delegate: EnterPhoneNumberVCDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +28,7 @@ class EnterPhoneNumberVC: UIViewController {
     }
     
     @objc func closeTapped() {
+        delegate?.enterPhoneNumberVCDidClose()
         self.dismiss(animated: true, completion: nil)
     }
     
