@@ -2,7 +2,7 @@
 //  NutritionInfoButtonView.swift
 //  Dodo pizza
 //
-//  Created by Dmitry Dmitry on 24.09.2023.
+//  Created by Dmitry Dmitry on 25.09.2023.
 //
 
 import UIKit
