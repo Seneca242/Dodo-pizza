@@ -9,7 +9,7 @@ import UIKit
 
 class DeliveryOrNotTableCell: UITableViewCell {
     
-    static let reuseID = "DeliveryOrNotCell"
+    static let reuseID = "DeliveryOrNotTableCell"
     
     let segmentedControl: UISegmentedControl = {
         let items = ["На доставку", "В пиццерии"]
