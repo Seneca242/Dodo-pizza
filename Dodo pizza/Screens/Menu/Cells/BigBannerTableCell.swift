@@ -6,14 +6,16 @@
 //
 
 import UIKit
-
 import SnapKit
 
 class BigBannerTableCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
-    static let reuseID = "BigBannerCell"
+    static let reuseID = "BigBannerTableCell"
+    
+    var onBigBannerCellTapped: ((Banner) -> ())?
 
     let bigBannerService = BigBannerService()
+    
     private let sectionInserts = UIEdgeInsets(top: 30, left: 0, bottom: 30, right: 0)
 
     var collectionView: UICollectionView = {
@@ -39,7 +41,7 @@ class BigBannerTableCell: UITableViewCell, UICollectionViewDelegate, UICollectio
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(BigBannerCollectionViewCell.self, forCellWithReuseIdentifier: BigBannerCollectionViewCell.reuseID)
-        fetchBanner()
+        fetchBigBanner()
     }
 
     required init?(coder: NSCoder) {
@@ -88,8 +90,14 @@ class BigBannerTableCell: UITableViewCell, UICollectionViewDelegate, UICollectio
         10
     }
 
-    private func fetchBanner() {
+    private func fetchBigBanner() {
         bigBanners = bigBannerService.fetchBigBanners()
     }
 }
 
+extension BigBannerTableCell {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let bigBanners = bigBanners[indexPath.item]
+        onBigBannerCellTapped?(bigBanners)
+    }
+}

@@ -8,9 +8,14 @@
 import UIKit
 import SnapKit
 
+protocol BannerCellDelegate: AnyObject {
+    func didBannerCellTap(_ banner: Banner)
+}
+
 class BannerTableCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    static let reuseID = "BannerCell"
+    weak var delegate: BannerCellDelegate?
+    static let reuseID = "BannerTableCell"
     
     let bannerService = BannerService()
     private let sectionInserts = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
@@ -32,6 +37,7 @@ class BannerTableCell: UITableViewCell, UICollectionViewDelegate, UICollectionVi
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.backgroundColor = .clear
         collectionView.alwaysBounceHorizontal = true
@@ -62,7 +68,6 @@ class BannerTableCell: UITableViewCell, UICollectionViewDelegate, UICollectionVi
         contentView.addSubview(headerView)
         headerView.addSubview(headerLabel)
         contentView.addSubview(collectionView)
-        //        addSubview(collectionView)
     }
     
     func setupConstraints() {
@@ -82,10 +87,6 @@ class BannerTableCell: UITableViewCell, UICollectionViewDelegate, UICollectionVi
             make.left.right.bottom.equalToSuperview()
 //            make.height.equalTo(150)
         }
-        //        collectionView.snp.makeConstraints { make in
-        ////            make.edges.equalTo(contentView.safeAreaLayoutGuide)
-        //            make.edges.equalToSuperview()
-        //        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -101,11 +102,9 @@ class BannerTableCell: UITableViewCell, UICollectionViewDelegate, UICollectionVi
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.height * 1.9, height: collectionView.bounds.height * 1.2)
-//        return CGSize(width: 150 * 1.6, height: 150 * 0.8)
-        //        return CGSize(width: 150, height: 150)
-    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        return CGSize(width: collectionView.bounds.height * 1.9, height: collectionView.bounds.height * 1.2)
+//    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         sectionInserts
@@ -132,5 +131,13 @@ extension BannerTableCell: UIScrollViewDelegate {
         } else {
             headerLabel.transform = .identity
         }
+    }
+}
+
+//MARK: - UITableViewDelegate
+extension BannerTableCell: UITableViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let banner = banners[indexPath.row]
+        delegate?.didBannerCellTap(banner)
     }
 }

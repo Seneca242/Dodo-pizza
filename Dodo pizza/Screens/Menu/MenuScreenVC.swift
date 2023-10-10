@@ -110,13 +110,33 @@ extension MenuScreenVC {
     }
 }
 
+//MARK: - BannerCellDelegate
+extension MenuScreenVC: BannerCellDelegate {
+    func didBannerCellTap(_ banner: Banner) {
+        showBannerDetailScreen(banner)
+    }
+}
+
 //MARK: - Navigation
 extension MenuScreenVC {
+    
+    func showBannerDetailScreen(_ banner: Banner) {
+        let bannerDetailVC = BannerDetailViewController()
+        bannerDetailVC.bannerProduct = banner
+        present(bannerDetailVC, animated: true)
+    }
+    
+    func showStoriesScreen(_ bigBanner: Banner) {
+        let storiesScreen = StoriesViewController()
+        present(storiesScreen, animated: true)
+    }
+    
     func showEnterPhoneNumberScreen() {
         let enterPhoneNumberVC = EnterPhoneNumberVC()
         enterPhoneNumberVC.delegate = self
         let navigationController = UINavigationController(rootViewController: enterPhoneNumberVC)
         present(navigationController, animated: true)
+        navigationController.presentationController?.delegate = self
     }
     
     func showSearchScreen() {
@@ -129,12 +149,6 @@ extension MenuScreenVC {
         let cityVC = CityViewController()
         let navigationController = UINavigationController(rootViewController: cityVC)
         present(navigationController, animated: true)
-    }
-    
-    func showStoriesScreen() {
-        let storiesVC = StoriesViewController()
-        storiesVC.modalPresentationStyle = .fullScreen
-        self.present(storiesVC, animated: true)
     }
     
     func showPizzaDescriptionScreen(_ pizza: Product) {
@@ -225,8 +239,9 @@ extension MenuScreenVC: UITableViewDataSource {
         
         if let section = MenuSection(rawValue: indexPath.section) {
             switch section {
+                
             case .deliveryOrNot:
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: "DeliveryOrNotCell", for: indexPath) as? DeliveryOrNotTableCell else { return UITableViewCell() }
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "DeliveryOrNotTableCell", for: indexPath) as? DeliveryOrNotTableCell else { return UITableViewCell() }
                 cell.segmentedControl.addTarget(
                     self,
                     action: #selector(segmentedControlChanged(_:)),
@@ -238,20 +253,27 @@ extension MenuScreenVC: UITableViewDataSource {
                     for: .touchUpInside
                 )
                 return cell
+                
             case .bigBanners:
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: "BigBannerCell", for: indexPath) as? BigBannerTableCell else { return UITableViewCell() }
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "BigBannerTableCell", for: indexPath) as? BigBannerTableCell else { return UITableViewCell() }
+                cell.onBigBannerCellTapped = { bigBanner in
+                    self.showStoriesScreen(bigBanner)
+                }
                 return cell
+                
             case .banners:
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: "BannerCell", for: indexPath) as? BannerTableCell else { return UITableViewCell() }
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "BannerTableCell", for: indexPath) as? BannerTableCell else { return UITableViewCell() }
+                cell.delegate = self
                 return cell
+                
             case .categories:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as? CategoryCell else { return UITableViewCell() }
                 
                 cell.onCategoryCellTapped = { category in
                     self.categoryCellTapped(category)
                 }
-                
                 return cell
+                
             case .products:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: ProductCell.reuseID, for: indexPath) as? ProductCell else { return UITableViewCell() }
                 let product = products[indexPath.row]
@@ -272,7 +294,6 @@ extension MenuScreenVC: UITableViewDelegate {
             case .deliveryOrNot:
                 break
             case .bigBanners:
-//                showStoriesScreen()
                 break
             case .banners:
                 break
@@ -294,4 +315,12 @@ extension MenuScreenVC: EnterPhoneNumberVCDelegate {
     }
 }
 
-
+extension MenuScreenVC: UIAdaptivePresentationControllerDelegate {
+    func presentationControllerWillDismiss(_ presentationController: UIPresentationController) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            if let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: MenuSection.deliveryOrNot.rawValue)) as? DeliveryOrNotTableCell {
+                cell.segmentedControl.selectedSegmentIndex = 0
+            }
+        }
+    }
+}

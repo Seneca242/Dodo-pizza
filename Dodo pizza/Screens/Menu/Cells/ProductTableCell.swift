@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ProductCell: UITableViewCell {
+final class ProductTableCell: UITableViewCell {
     
     static let reuseID = "ProductCell"
     
@@ -46,7 +46,7 @@ final class ProductCell: UITableViewCell {
     }
 }
 
-extension ProductCell {
+extension ProductTableCell {
     
     private func setupViews() {
         contentView.addSubview(productImageView)

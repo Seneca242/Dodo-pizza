@@ -20,10 +20,11 @@ class NutritionInfoView: UIView {
     let nutritionInfoButton: UIButton = {
         let button = UIButton()
         button.setTitle("i", for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         button.backgroundColor = .white
         button.setTitleColor(.gray, for: .normal)
         button.layer.cornerRadius = 15
-        button.layer.borderWidth = 5
+        button.layer.borderWidth = 3
         button.layer.borderColor = UIColor.gray.cgColor
         return button
     }()
@@ -104,10 +105,10 @@ class NutritionInfoView: UIView {
     }
     
     private func setupConstraints() {
-//        nutritionInfoButton.snp.makeConstraints { make in
-//            make.top.right.equalToSuperview()
-//            make.width.height.equalTo(30)
-//        }
+        nutritionInfoButton.snp.makeConstraints { make in
+            make.top.right.equalToSuperview()
+            make.width.height.equalTo(30)
+        }
         
         nutritionInfoView.snp.makeConstraints { make in
             make.center.equalToSuperview()
@@ -167,6 +168,6 @@ class NutritionInfoView: UIView {
 //MARK: - Event Handler (Actions)
 extension NutritionInfoView {
     @objc private func showNutritionInfoView() {
-        nutritionInfoView.isHidden.toggle()
+        self.nutritionInfoView.isHidden.toggle()
     }
 }

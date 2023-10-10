@@ -13,7 +13,6 @@ class OrderButtonView: UIView {
     var orderButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .orange
-//        button.setTitle("В корзину за 300 ₽", for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
         button.layer.cornerRadius = 20
         return button

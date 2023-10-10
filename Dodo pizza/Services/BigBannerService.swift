@@ -10,43 +10,147 @@ import Foundation
 class BigBannerService {
     private let bigBanners: [Banner] = [
        Banner (
-        image: "firstOrderBigBanner"
+        image: "bigBannerGuessProduct",
+        stories: [
+            Stories(image: "bigBannerGuessProduct"),
+            Stories(image: "bigBannersOrderDodoCombo"),
+            Stories(image: "bigBannersPeopleMatters"),
+            Stories(image: "bigBannersOpenMoodEnergy"),
+            Stories(image: "bigBannerCodo"),
+            Stories(image: "bigBannersYrReviews")
+        ]
        ),
        Banner(
-        image: "gifts4WaitingBigBanner"
+        image: "bigBannersOrderDodoCombo",
+        stories: [
+            Stories(image: "bigBannerGuessProduct"),
+            Stories(image: "bigBannersOrderDodoCombo"),
+            Stories(image: "bigBannersPeopleMatters"),
+            Stories(image: "bigBannersOpenMoodEnergy"),
+            Stories(image: "bigBannerCodo"),
+            Stories(image: "bigBannersYrReviews")
+        ]
        ),
        Banner(
-        image: "hotGentleBigBanner"
+        image: "bigBannersPeopleMatters",
+        stories: [
+            Stories(image: "bigBannerGuessProduct"),
+            Stories(image: "bigBannersOrderDodoCombo"),
+            Stories(image: "bigBannersPeopleMatters"),
+            Stories(image: "bigBannersOpenMoodEnergy"),
+            Stories(image: "bigBannerCodo"),
+            Stories(image: "bigBannersYrReviews")
+        ]
        ),
        Banner(
-        image: "kolbasaHeroBigBanner"
+        image: "bigBannersOpenMoodEnergy",
+        stories: [
+            Stories(image: "bigBannerGuessProduct"),
+            Stories(image: "bigBannersOrderDodoCombo"),
+            Stories(image: "bigBannersPeopleMatters"),
+            Stories(image: "bigBannersOpenMoodEnergy"),
+            Stories(image: "bigBannerCodo"),
+            Stories(image: "bigBannersYrReviews")
+        ]
        ),
        Banner(
-        image: "monthWordBigBanner"
+        image: "bigBannerCodo",
+        stories: [
+            Stories(image: "bigBannerGuessProduct"),
+            Stories(image: "bigBannersOrderDodoCombo"),
+            Stories(image: "bigBannersPeopleMatters"),
+            Stories(image: "bigBannersOpenMoodEnergy"),
+            Stories(image: "bigBannerCodo"),
+            Stories(image: "bigBannersYrReviews")
+        ]
        ),
        Banner (
-        image: "mortadellaBigBanner"
+        image: "bigBannersYrReviews",
+        stories: [
+            Stories(image: "bigBannerGuessProduct"),
+            Stories(image: "bigBannersOrderDodoCombo"),
+            Stories(image: "bigBannersPeopleMatters"),
+            Stories(image: "bigBannersOpenMoodEnergy"),
+            Stories(image: "bigBannerCodo"),
+            Stories(image: "bigBannersYrReviews")
+        ]
        ),
        Banner(
-        image: "newComboBigBanner"
+        image: "newComboBigBanner",
+        stories: [
+            Stories(image: "bigBannerGuessProduct"),
+            Stories(image: "bigBannersOrderDodoCombo"),
+            Stories(image: "bigBannersPeopleMatters"),
+            Stories(image: "bigBannersOpenMoodEnergy"),
+            Stories(image: "bigBannerCodo"),
+            Stories(image: "bigBannersYrReviews")
+        ]
        ),
        Banner(
-        image: "newPointsBigBanner"
+        image: "newPointsBigBanner",
+        stories: [
+            Stories(image: "bigBannerGuessProduct"),
+            Stories(image: "bigBannersOrderDodoCombo"),
+            Stories(image: "bigBannersPeopleMatters"),
+            Stories(image: "bigBannersOpenMoodEnergy"),
+            Stories(image: "bigBannerCodo"),
+            Stories(image: "bigBannersYrReviews")
+        ]
        ),
        Banner(
-        image: "openMoodBigBanner"
+        image: "openMoodBigBanner",
+        stories: [
+            Stories(image: "bigBannerGuessProduct"),
+            Stories(image: "bigBannersOrderDodoCombo"),
+            Stories(image: "bigBannersPeopleMatters"),
+            Stories(image: "bigBannersOpenMoodEnergy"),
+            Stories(image: "bigBannerCodo"),
+            Stories(image: "bigBannersYrReviews")
+        ]
        ),
        Banner(
-        image: "orderComboBigBanner"
+        image: "orderComboBigBanner",
+        stories: [
+            Stories(image: "bigBannerGuessProduct"),
+            Stories(image: "bigBannersOrderDodoCombo"),
+            Stories(image: "bigBannersPeopleMatters"),
+            Stories(image: "bigBannersOpenMoodEnergy"),
+            Stories(image: "bigBannerCodo"),
+            Stories(image: "bigBannersYrReviews")
+        ]
        ),
        Banner(
-        image: "peopleImportantBigBanner"
+        image: "peopleImportantBigBanner",
+        stories: [
+            Stories(image: "bigBannerGuessProduct"),
+            Stories(image: "bigBannersOrderDodoCombo"),
+            Stories(image: "bigBannersPeopleMatters"),
+            Stories(image: "bigBannersOpenMoodEnergy"),
+            Stories(image: "bigBannerCodo"),
+            Stories(image: "bigBannersYrReviews")
+        ]
        ),
        Banner(
-        image: "schoolMatesLoveBigBanner"
+        image: "schoolMatesLoveBigBanner",
+        stories: [
+            Stories(image: "bigBannerGuessProduct"),
+            Stories(image: "bigBannersOrderDodoCombo"),
+            Stories(image: "bigBannersPeopleMatters"),
+            Stories(image: "bigBannersOpenMoodEnergy"),
+            Stories(image: "bigBannerCodo"),
+            Stories(image: "bigBannersYrReviews")
+        ]
        ),
        Banner(
-        image: "storiesTeamWatchesBigBanner"
+        image: "storiesTeamWatchesBigBanner",
+        stories: [
+            Stories(image: "bigBannerGuessProduct"),
+            Stories(image: "bigBannersOrderDodoCombo"),
+            Stories(image: "bigBannersPeopleMatters"),
+            Stories(image: "bigBannersOpenMoodEnergy"),
+            Stories(image: "bigBannerCodo"),
+            Stories(image: "bigBannersYrReviews")
+        ]
        )
     ]
     
