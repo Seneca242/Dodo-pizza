@@ -8,9 +8,9 @@
 import UIKit
 import SnapKit
 
-class PizzaDescriptionVC: UIViewController {
+class ProductDescriptionVC: UIViewController {
     
-    var pizza: Product?
+    var product: Product?
     
     let nameLabel = NameLabel(style: .menu)
     let detailLabel = DetailLabel()
@@ -20,31 +20,65 @@ class PizzaDescriptionVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupConstraints()
         view.backgroundColor = .white
-        orderButtonView.backgroundColor = UIColor(
-            red: 248/255,
-            green: 248/255,
-            blue: 255/255,
-            alpha: 1
-        )
         
-        guard let pizza = pizza else {
+        orderButtonView.orderButton.isUserInteractionEnabled = true
+        
+        setupConstraints()
+        setupOrderButton()
+
+        guard let product = product else {
+            print("Error: Product is not set!")
+            return
+        }
+        update(product)
+        setupActions()
+    }
+    
+    private func setupOrderButton() {
+//        orderButtonView.backgroundColor = UIColor(
+//            red: 248/255,
+//            green: 248/255,
+//            blue: 255/255,
+//            alpha: 1
+//        )
+        
+        guard let product = product else {
             print("Error: Pizza not set!")
             return
         }
         orderButtonView.orderButton.setTitle(
-            "В корзину за \(String(describing: pizza.price)) ₽", for: .normal
+            "В корзину за \(String(describing: product.price)) ₽", for: .normal
         )
-        update(pizza)
     }
-
+    
+    
+    //MARK: - Business logic
     func update(_ product: Product) {
         nameLabel.text = product.name
         detailLabel.text = product.detail
         productImageView.image = UIImage(named: product.image)
     }
-
+    
+    func setupActions() {
+        orderButtonView.orderButton.addTarget(
+            self,
+            action: #selector(putProductToTheBasket),
+            for: .touchUpInside
+        )
+    }
+    
+    //MARK: - Event handler (Actions)
+    @objc private func putProductToTheBasket() {
+        let basketVC = BasketViewController()
+        guard let product = product else {
+            print("Error: Product is not set!")
+            return
+        }
+        basketVC.products.append(product)
+    }
+    
+    //MARK: - Subviews and constraints
     private func addSubviews(subviews: UIView...) {
         subviews.forEach { subview in
             view.addSubview(subview)
@@ -82,3 +116,4 @@ class PizzaDescriptionVC: UIViewController {
         }
     }
 }
+
