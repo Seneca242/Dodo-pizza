@@ -8,8 +8,8 @@
 import UIKit
 import SnapKit
 
-enum BasketSection: Int, CaseIterable {
-    case basketResultLabel = 0
+enum CartSection: Int, CaseIterable {
+    case cartResultLabel = 0
     case orderDetail = 1
     case orderSupplement = 2
     case dealСode = 3
@@ -32,10 +32,9 @@ final class CartViewController: UIViewController {
     //MARK: - UI Elements
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
-//        tableView.backgroundColor = .red
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(ProductTableCell.self, forCellReuseIdentifier: ProductTableCell.reuseID)
+        tableView.register(CartProductTableViewCell.self, forCellReuseIdentifier: CartProductTableViewCell.reuseID)
         return tableView
     }()
     
@@ -96,16 +95,16 @@ extension CartViewController {
 extension CartViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        BasketSection.allCases.count
+        CartSection.allCases.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print(products.count)
         
-        if let section = BasketSection(rawValue: section) {
+        if let section = CartSection(rawValue: section) {
             switch section {
                 
-            case .basketResultLabel:
+            case .cartResultLabel:
                 return 1
             case .orderDetail:
                 return products.count
@@ -123,16 +122,15 @@ extension CartViewController: UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if let section = BasketSection(rawValue: indexPath.section) {
+        if let section = CartSection(rawValue: indexPath.section) {
             switch section {
                 
-            case .basketResultLabel:
+            case .cartResultLabel:
                 break
             case .orderDetail:
                 
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: ProductTableCell.reuseID, for: indexPath) as? ProductTableCell else { return UITableViewCell() }
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: CartProductTableViewCell.reuseID, for: indexPath) as? CartProductTableViewCell else { return UITableViewCell() }
                 let product = products[indexPath.row]
-                cell.quantityLabel.text = "\(product.quantity)"
                 cell.update(product)
                 return cell
                 
@@ -149,6 +147,25 @@ extension CartViewController: UITableViewDataSource {
         return UITableViewCell()
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch CartSection(rawValue: indexPath.section) {
+            
+        case .cartResultLabel:
+            return 100
+        case .orderDetail:
+            return 180
+        case .orderSupplement:
+            return 100
+        case .dealСode:
+            return 100
+        case .otherOrderDetail:
+            return 100
+        case .orderButton:
+            return 100
+        default:
+            return UITableView.automaticDimension
+        }
+    }
     func updateProductInCart(product: Product, newQuantity: Int) {
         if let index = products.firstIndex(where: { $0.name == product.name }) {
             products[index].quantity = newQuantity

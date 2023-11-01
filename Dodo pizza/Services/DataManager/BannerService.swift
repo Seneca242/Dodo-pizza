@@ -10,7 +10,7 @@ import Foundation
 class BannerService {
     private let banners: [Banner] = [
        Banner (
-        image: "brusletiki",
+        image: "brusletikiBanner",
         name: "Бруслетики",
         price: 230,
         description: "Это задорные сладкие рулетики, в которых закрутился микс из натуральной брусники и сгущённого молока",
@@ -24,7 +24,7 @@ class BannerService {
         )
        ),
        Banner(
-        image: "pepperoni fresh",
+        image: "pepperoniFreshBanner",
         name: "Пепперони фреш",
         price: 299,
         description: "Пикантная пепперони , увеличенная порция моцареллы, томаты , фирменный томатный соус",
@@ -37,7 +37,7 @@ class BannerService {
         )
        ),
        Banner(
-        image: "dodster",
+        image: "dodsterBanner",
         name: "Додстер",
         price: 169,
         description: "Легендарная горячая закуска с цыпленком, томатами, моцареллой, соусом ранч в тонкой пшеничной лепешке",
@@ -50,7 +50,7 @@ class BannerService {
         )
        ),
        Banner(
-        image: "threePizzas",
+        image: "threePizzasBanner",
         name: "3 пиццы",
         price: 1099,
         description: "Три удовольствия в нашем меню — это 3 средние пиццы на ваш выбор. Цена комбо зависит от выбранных пицц и может быть увеличена",
@@ -63,7 +63,7 @@ class BannerService {
         )
        ),
        Banner(
-        image: "combo",
+        image: "comboBanner",
         name: "Комбо",
         price: 599,
         description: "Если хочется всего понемногу. Маленькая пицца, закуска, напиток и соус. Цена комбо зависит от выбранных продуктов и может быть увеличена",
@@ -74,6 +74,12 @@ class BannerService {
             carbohydrates: "32,1 г",
             weight: "370 г"
         )
+       ),
+       Banner(
+        image: "twoSaucesBanner",
+        name: "2 соуса",
+        price: 75,
+        description: "Комбинируйте пары соусов для ярких перекусов"
        )
     ]
     
@@ -81,3 +87,5 @@ class BannerService {
         banners
     }
 }
+
+

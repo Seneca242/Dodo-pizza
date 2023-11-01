@@ -8,13 +8,20 @@
 import UIKit
 
 class JustButton: UIButton {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    
+    init(style: CGRect = .zero) {
+        super.init(frame: style)
+        commonInit()
     }
-    */
-
+    
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func commonInit() {
+        self.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        self.backgroundColor = .clear
+        self.setTitleColor(.orange, for: .normal)
+    }
 }

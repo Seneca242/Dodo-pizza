@@ -9,7 +9,7 @@ import UIKit
 
 final class ProductTableCell: UITableViewCell {
     
-    static let reuseID = "ProductCell"
+    static let reuseID = "ProductTableCell"
     
     var verticalStackView: UIStackView = {
         let stackView = UIStackView()
@@ -44,6 +44,7 @@ final class ProductTableCell: UITableViewCell {
         priceButton.setTitle("от \(product.price) ₽", for: .normal)
         productImageView.image = UIImage(named: product.image)
     }
+
 }
 
 extension ProductTableCell {

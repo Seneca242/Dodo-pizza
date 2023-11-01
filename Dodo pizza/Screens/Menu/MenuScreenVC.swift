@@ -12,13 +12,18 @@ enum MenuSection: Int, CaseIterable {
     case bigBanners = 1
     case banners = 2
     case categories = 3
-    case products = 4
+    case bigPizzaProduct = 4
+    case products = 5
     
 }
 
 final class MenuScreenVC: UIViewController {
     
+    //MARK: Services
     let productService = ProductService()
+    let bigPizzaService = BigPizzaService()
+    let productMockDataAPI = ProductsMockData()
+    let networkManager = NetworkManager()
     
     var products: [Product] = [] {
         didSet {
@@ -26,11 +31,21 @@ final class MenuScreenVC: UIViewController {
         }
     }
     
+    var bigPizzaProduct: Product? {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
+    var bigBanners: [Banner] = []
+    var currentBigBannerIndex: Int = 0
+    
     private lazy var tableView: UITableView = {
         var tableView = UITableView()
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(ProductCell.self, forCellReuseIdentifier: ProductCell.reuseID)
+        tableView.register(ProductTableCell.self, forCellReuseIdentifier: ProductTableCell.reuseID)
+        tableView.register(BigPizzaTableCell.self, forCellReuseIdentifier: BigPizzaTableCell.reuseID)
         tableView.register(DeliveryOrNotTableCell.self, forCellReuseIdentifier: DeliveryOrNotTableCell.reuseID)
         tableView.register(BannerTableCell.self, forCellReuseIdentifier: BannerTableCell.reuseID)
         tableView.register(BigBannerTableCell.self, forCellReuseIdentifier: BigBannerTableCell.reuseID)
@@ -47,7 +62,9 @@ final class MenuScreenVC: UIViewController {
         setupSearchButton()
         setupCityButton()
         
-        fetchProducts()
+//        fetchProducts()
+        fetchData(from: productMockDataAPI.productMockDataAPI)
+        fetchBigPizzaProduct()
     }
     
     private func setupSearchButton() {
@@ -85,6 +102,7 @@ final class MenuScreenVC: UIViewController {
         navigationItem.leftBarButtonItem = barButtonItem
     }
 
+//MARK: - NavigationBar
     private func setupNavigationBar() {
         navigationController?.navigationBar.prefersLargeTitles = false
         let navBarAppearance = UINavigationBarAppearance()
@@ -127,7 +145,19 @@ extension MenuScreenVC {
     }
     
     func showStoriesScreen(_ bigBanner: Banner) {
-        let storiesScreen = StoriesViewController()
+        //        let storiesScreen = StoriesViewController()
+        //        present(storiesScreen, animated: true)
+        guard let stories = bigBanner.stories else { return }
+        let storiesScreen = StoriesViewController(stories: stories)
+        storiesScreen.didFinishLastStory = { [weak self] in
+            guard let self = self else { return }
+            self.currentBigBannerIndex += 1
+            if self.currentBigBannerIndex < self.bigBanners.count {
+                self.showStoriesScreen(self.bigBanners[self.currentBigBannerIndex])
+            } else {
+                self.currentBigBannerIndex = 0
+            }
+        }
         present(storiesScreen, animated: true)
     }
     
@@ -151,17 +181,40 @@ extension MenuScreenVC {
         present(navigationController, animated: true)
     }
     
-    func showPizzaDescriptionScreen(_ pizza: Product) {
-        let pizzaDescriptionVC = PizzaDescriptionVC()
-        pizzaDescriptionVC.pizza = pizza
-        present(pizzaDescriptionVC, animated: true)
+    func showProductDescriptionScreen(_ pizza: Product) {
+        let productDescriptionVC = ProductDescriptionVC()
+        productDescriptionVC.product = pizza
+        present(productDescriptionVC, animated: true)
     }
 }
 
 //MARK: - Business logic
 extension MenuScreenVC {
-    private func fetchProducts() {
-        products = productService.fetchProducts()
+    
+    private func fetchData(from url: String?) {
+        networkManager.fetchData(from: url ?? "") { [weak self] result in
+            switch result {
+            case .success(let products):
+                self?.products = products
+                self?.tableView.reloadData()
+            case .failure(let error):
+                print("Error fetching data: \(error.localizedDescription)")
+                
+            }
+        }
+    }
+    
+//    private func fetchProducts() {
+//        products = productService.fetchProducts()
+//    }
+    
+    private func fetchBigPizzaProduct() {
+        bigPizzaProduct = bigPizzaService.fetchBigPizzaProduct()
+    }
+    
+    private func fetchBigBanners() {
+        let bigBannerService = BigBannerService()
+        bigBanners = bigBannerService.fetchBigBanners()
     }
 }
 
@@ -205,6 +258,8 @@ extension MenuScreenVC: UITableViewDataSource {
             return 150
         case .banners:
             return 200
+        case .bigPizzaProduct:
+            return 400
         case .categories:
             return 60
         default:
@@ -227,6 +282,8 @@ extension MenuScreenVC: UITableViewDataSource {
             case .banners:
                 return 1
             case .categories:
+                return 1
+            case .bigPizzaProduct:
                 return 1
             case .products:
                 return products.count
@@ -259,6 +316,7 @@ extension MenuScreenVC: UITableViewDataSource {
                 cell.onBigBannerCellTapped = { bigBanner in
                     self.showStoriesScreen(bigBanner)
                 }
+            
                 return cell
                 
             case .banners:
@@ -273,9 +331,14 @@ extension MenuScreenVC: UITableViewDataSource {
                     self.categoryCellTapped(category)
                 }
                 return cell
-                
+            case .bigPizzaProduct:
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: BigPizzaTableCell.reuseID, for: indexPath) as? BigPizzaTableCell else { return UITableViewCell() }
+                if let bigPizzaProduct = bigPizzaProduct {
+                    cell.update(bigPizzaProduct)
+                }
+                return cell
             case .products:
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: ProductCell.reuseID, for: indexPath) as? ProductCell else { return UITableViewCell() }
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: ProductTableCell.reuseID, for: indexPath) as? ProductTableCell else { return UITableViewCell() }
                 let product = products[indexPath.row]
                 cell.update(product)
                 return cell
@@ -299,9 +362,12 @@ extension MenuScreenVC: UITableViewDelegate {
                 break
             case .categories:
                 break
+            case .bigPizzaProduct:
+                guard let bigPizzaProduct = bigPizzaProduct else { return }
+                showProductDescriptionScreen(bigPizzaProduct)
             case .products:
-                let pizza = products[indexPath.row]
-                showPizzaDescriptionScreen(pizza)
+                let product = products[indexPath.row]
+                showProductDescriptionScreen(product)
             }
         }
     }

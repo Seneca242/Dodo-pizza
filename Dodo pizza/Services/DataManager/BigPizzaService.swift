@@ -11,7 +11,8 @@ class BigPizzaService {
     private let bigPizzaProduct: Product =
         Product(
             name: "Трюфельная с мортаделлой",
-            detail: "Мортаделла, трюфельный соус, моцарелла, красный лук, чеснок, шампиньоны и фирменный соус альфредо",
+            detail: "Мортаделла , трюфельный соус, шампиньоны , красный лук , моцарелла, фирменный соус альфредо, чеснок", 
+            sizeDetail: "30 см, традиционное тесто, 620 г",
             price: 539,
             image: "truffleMordatellaPizza"
         )

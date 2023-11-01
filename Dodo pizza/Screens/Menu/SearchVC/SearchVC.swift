@@ -32,7 +32,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDe
         var tableView = UITableView()
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(ProductCell.self, forCellReuseIdentifier: ProductCell.reuseID)
+        tableView.register(ProductTableCell.self, forCellReuseIdentifier: ProductTableCell.reuseID)
         return tableView
     }()
 
@@ -90,7 +90,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDe
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: ProductCell.reuseID, for: indexPath) as? ProductCell else {return UITableViewCell()}
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ProductTableCell.reuseID, for: indexPath) as? ProductTableCell else {return UITableViewCell()}
         let product = filteredProducts[indexPath.row]
         cell.update(product)
         return cell

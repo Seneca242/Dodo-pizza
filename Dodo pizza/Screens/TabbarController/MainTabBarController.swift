@@ -40,9 +40,9 @@ class MainTabBarController: UITabBarController {
             selectedImage: UIImage(named: "tabbarContactsOrange")
         )
         
-        let basketVC = BasketViewController()
-        let basketNavVC = UINavigationController(rootViewController: basketVC)
-        basketNavVC.tabBarItem = .init(
+        let cartVC = CartViewController()
+        let cartNavVC = UINavigationController(rootViewController: cartVC)
+        cartNavVC.tabBarItem = .init(
             title: "Корзина",
             image: UIImage(named: "tabbarBasketGrey"),
             selectedImage: UIImage(named: "tabbarBasketOrange")
@@ -67,6 +67,6 @@ class MainTabBarController: UITabBarController {
             tabBar.isTranslucent = true
         }
         tabBar.tintColor = .red
-        viewControllers = [menuScreenNavVC, profileNavVC, contactsNavVC, basketNavVC]
+        viewControllers = [menuScreenNavVC, profileNavVC, contactsNavVC, cartNavVC]
     }
 }
