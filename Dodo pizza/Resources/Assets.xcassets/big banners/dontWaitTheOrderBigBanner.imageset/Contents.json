@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "dontWaitTheOrderBigBanner.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "dontWaitTheOrderBigBanner@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "dontWaitTheOrderBigBanner@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
