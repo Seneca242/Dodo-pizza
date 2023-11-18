@@ -22,7 +22,8 @@ class BannerCollectionViewCell: UICollectionViewCell {
     var verticalStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.spacing = 0
+        stackView.distribution = .fillProportionally
+        stackView.spacing = 20
         stackView.alignment = .leading
         stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(
             top: 20,
