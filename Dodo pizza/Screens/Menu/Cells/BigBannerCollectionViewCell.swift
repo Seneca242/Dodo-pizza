@@ -30,8 +30,8 @@ class BigBannerCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func update(_ banner: Banner) {
-        productImageView.image = UIImage(named: banner.image)
+    func update(_ bigBanner: BigBanner) {
+        productImageView.image = UIImage(named: bigBanner.image)
     }
 }
 

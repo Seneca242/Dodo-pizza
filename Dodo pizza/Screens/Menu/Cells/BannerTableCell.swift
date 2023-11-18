@@ -16,9 +16,15 @@ class BannerTableCell: UITableViewCell, UICollectionViewDelegate, UICollectionVi
     
     weak var delegate: BannerCellDelegate?
     static let reuseID = "BannerTableCell"
+    private let networkManager = NetworkManager()
     
     let bannerService = BannerService()
-    private let sectionInserts = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
+    private let sectionInserts = UIEdgeInsets(
+        top: 0,
+        left: 0,
+        bottom: 0,
+        right: 0
+    )
     
     private let headerView: UIView = {
         let view = UIView()
@@ -57,7 +63,7 @@ class BannerTableCell: UITableViewCell, UICollectionViewDelegate, UICollectionVi
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(BannerCollectionViewCell.self, forCellWithReuseIdentifier: BannerCollectionViewCell.reuseID)
-        fetchBanner()
+        fetchBannerData()
     }
     
     required init?(coder: NSCoder) {
@@ -85,7 +91,7 @@ class BannerTableCell: UITableViewCell, UICollectionViewDelegate, UICollectionVi
         collectionView.snp.makeConstraints { make in
             make.top.equalTo(headerView.snp.bottom)
             make.left.right.bottom.equalToSuperview()
-//            make.height.equalTo(150)
+//            make.height.equalTo(80)
         }
     }
     
@@ -118,8 +124,26 @@ class BannerTableCell: UITableViewCell, UICollectionViewDelegate, UICollectionVi
         10
     }
     
-    private func fetchBanner() {
-        banners = bannerService.fetchBanners()
+//    private func fetchBanner() {
+//        banners = bannerService.fetchBanners()
+//    }
+    
+    private func fetchBannerData() {
+        
+        guard let url = bannerService.getURL() else { return }
+        
+        networkManager.fetchBannerData(from: url) { [weak self] result in
+            switch result {
+            case .success(let banners):
+                self?.banners = banners
+                DispatchQueue.main.async {
+                    self?.collectionView.reloadData()
+                }
+            case .failure(let error):
+                print("Error fetching data: \(error.localizedDescription)")
+                
+            }
+        }
     }
 }
 

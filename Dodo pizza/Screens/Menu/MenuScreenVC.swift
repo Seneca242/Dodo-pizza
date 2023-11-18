@@ -22,7 +22,9 @@ final class MenuScreenVC: UIViewController {
     //MARK: Services
     let productService = ProductService()
     let bigPizzaService = BigPizzaService()
+//    let productMockDataAPI = ProductsMockData()
     let productMockDataAPI = ProductsMockData()
+    
     let networkManager = NetworkManager()
     
     var products: [Product] = [] {
@@ -37,7 +39,7 @@ final class MenuScreenVC: UIViewController {
         }
     }
     
-    var bigBanners: [Banner] = []
+    var bigBanners: [BigBanner] = []
     var currentBigBannerIndex: Int = 0
     
     private lazy var tableView: UITableView = {
@@ -54,6 +56,8 @@ final class MenuScreenVC: UIViewController {
         return tableView
     }()
     
+    
+    //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -63,8 +67,9 @@ final class MenuScreenVC: UIViewController {
         setupCityButton()
         
 //        fetchProducts()
-        fetchData(from: productMockDataAPI.productMockDataAPI)
-        fetchBigPizzaProduct()
+        fetchProductData()
+//        fetchBigPizzaProduct()
+        fetchBigPizzaData()
     }
     
     private func setupSearchButton() {
@@ -144,7 +149,7 @@ extension MenuScreenVC {
         present(bannerDetailVC, animated: true)
     }
     
-    func showStoriesScreen(_ bigBanner: Banner) {
+    func showStoriesScreen(_ bigBanner: BigBanner) {
         //        let storiesScreen = StoriesViewController()
         //        present(storiesScreen, animated: true)
         guard let stories = bigBanner.stories else { return }
@@ -191,12 +196,17 @@ extension MenuScreenVC {
 //MARK: - Business logic
 extension MenuScreenVC {
     
-    private func fetchData(from url: String?) {
-        networkManager.fetchData(from: url ?? "") { [weak self] result in
+    private func fetchProductData() {
+        
+        guard let url = productMockDataAPI.getURL() else { return }
+        
+        networkManager.fetchProductData(from: url) { [weak self] result in
             switch result {
             case .success(let products):
                 self?.products = products
-                self?.tableView.reloadData()
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
+                }
             case .failure(let error):
                 print("Error fetching data: \(error.localizedDescription)")
                 
@@ -208,8 +218,24 @@ extension MenuScreenVC {
 //        products = productService.fetchProducts()
 //    }
     
-    private func fetchBigPizzaProduct() {
-        bigPizzaProduct = bigPizzaService.fetchBigPizzaProduct()
+//    private func fetchBigPizzaProduct() {
+//        bigPizzaProduct = bigPizzaService.fetchBigPizzaProduct()
+//    }
+    
+    private func fetchBigPizzaData() {
+        guard let url = bigPizzaService.getAPI() else { return }
+        
+        networkManager.fetchBigPizzaData(from: url) { result in
+            switch result {
+            case .success(let bigPizza):
+                self.bigPizzaProduct = bigPizza
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            case .failure(let error):
+                print("Error fetching data: \(error.localizedDescription)")
+            }
+        }
     }
     
     private func fetchBigBanners() {
@@ -261,7 +287,7 @@ extension MenuScreenVC: UITableViewDataSource {
         case .bigPizzaProduct:
             return 400
         case .categories:
-            return 60
+            return 100
         default:
             return UITableView.automaticDimension
         }
@@ -334,6 +360,7 @@ extension MenuScreenVC: UITableViewDataSource {
             case .bigPizzaProduct:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: BigPizzaTableCell.reuseID, for: indexPath) as? BigPizzaTableCell else { return UITableViewCell() }
                 if let bigPizzaProduct = bigPizzaProduct {
+                    print("\(bigPizzaProduct.name)")
                     cell.update(bigPizzaProduct)
                 }
                 return cell

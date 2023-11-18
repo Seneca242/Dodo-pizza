@@ -36,7 +36,7 @@
 		04C29F382AB39FA5003BB9B6 /* BigBannerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C29F372AB39FA5003BB9B6 /* BigBannerService.swift */; };
 		04C29F3A2AB3A1CF003BB9B6 /* BigBannerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C29F392AB3A1CF003BB9B6 /* BigBannerCollectionViewCell.swift */; };
 		04C29F3C2AB3A35A003BB9B6 /* BigBannerTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C29F3B2AB3A35A003BB9B6 /* BigBannerTableCell.swift */; };
-		04C29F3E2AB47E55003BB9B6 /* Stories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C29F3D2AB47E55003BB9B6 /* Stories.swift */; };
+		04C29F3E2AB47E55003BB9B6 /* BigBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C29F3D2AB47E55003BB9B6 /* BigBanner.swift */; };
 		04C29F402AB47E81003BB9B6 /* StoriesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C29F3F2AB47E81003BB9B6 /* StoriesService.swift */; };
 		04C29F422AB48DE7003BB9B6 /* StoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C29F412AB48DE7003BB9B6 /* StoriesViewController.swift */; };
 		04C29F482AB5C1BB003BB9B6 /* DeliveryOrNotTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C29F472AB5C1BB003BB9B6 /* DeliveryOrNotTableCell.swift */; };
@@ -90,7 +90,7 @@
 		04C29F372AB39FA5003BB9B6 /* BigBannerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigBannerService.swift; sourceTree = "<group>"; };
 		04C29F392AB3A1CF003BB9B6 /* BigBannerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigBannerCollectionViewCell.swift; sourceTree = "<group>"; };
 		04C29F3B2AB3A35A003BB9B6 /* BigBannerTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigBannerTableCell.swift; sourceTree = "<group>"; };
-		04C29F3D2AB47E55003BB9B6 /* Stories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stories.swift; sourceTree = "<group>"; };
+		04C29F3D2AB47E55003BB9B6 /* BigBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigBanner.swift; sourceTree = "<group>"; };
 		04C29F3F2AB47E81003BB9B6 /* StoriesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesService.swift; sourceTree = "<group>"; };
 		04C29F412AB48DE7003BB9B6 /* StoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesViewController.swift; sourceTree = "<group>"; };
 		04C29F472AB5C1BB003BB9B6 /* DeliveryOrNotTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryOrNotTableCell.swift; sourceTree = "<group>"; };
@@ -273,7 +273,7 @@
 			children = (
 				04714D832A58368000B14B9C /* Product.swift */,
 				04D193D12A853A56008732FE /* Banner.swift */,
-				04C29F3D2AB47E55003BB9B6 /* Stories.swift */,
+				04C29F3D2AB47E55003BB9B6 /* BigBanner.swift */,
 				042EAAC62AAA572300D75D06 /* Category.swift */,
 			);
 			path = Model;
@@ -503,7 +503,7 @@
 				0410C0B32AD72E17004D835B /* StorageManager.swift in Sources */,
 				04D55E772A549C2400159886 /* SceneDelegate.swift in Sources */,
 				04D193CE2A851733008732FE /* SearchVC.swift in Sources */,
-				04C29F3E2AB47E55003BB9B6 /* Stories.swift in Sources */,
+				04C29F3E2AB47E55003BB9B6 /* BigBanner.swift in Sources */,
 				04B3F1E32AEFFAA500D6B289 /* SizeDetailLabel.swift in Sources */,
 				042EAAC32AAA504B00D75D06 /* CategoryCell.swift in Sources */,
 				042EAAC72AAA572300D75D06 /* Category.swift in Sources */,

@@ -12,7 +12,7 @@ class BigBannerTableCell: UITableViewCell, UICollectionViewDelegate, UICollectio
 
     static let reuseID = "BigBannerTableCell"
     
-    var onBigBannerCellTapped: ((Banner) -> ())?
+    var onBigBannerCellTapped: ((BigBanner) -> ())?
 
     let bigBannerService = BigBannerService()
     
@@ -28,7 +28,7 @@ class BigBannerTableCell: UITableViewCell, UICollectionViewDelegate, UICollectio
         return collectionView
     }()
 
-    var bigBanners: [Banner] = [] {
+    var bigBanners: [BigBanner] = [] {
         didSet {
             collectionView.reloadData()
         }

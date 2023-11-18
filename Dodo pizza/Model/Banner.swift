@@ -7,17 +7,17 @@
 
 import Foundation
 
-struct Banner {
+struct Banner: Codable {
     var image: String
     var name: String?
     var price: Int?
     var description: String?
     var isGrayButtonVisible = false
     var nutritionalValues: NutritionalValues?
-    var stories: [Stories]?
+//    var stories: [Stories]?
 }
 
-struct NutritionalValues {
+struct NutritionalValues: Codable {
     var energy: String
     var protein: String
     var fat: String
@@ -25,6 +25,6 @@ struct NutritionalValues {
     var weight: String
 }
 
-struct Stories {
-    var image: String
-}
+//struct Stories {
+//    var image: String
+//}

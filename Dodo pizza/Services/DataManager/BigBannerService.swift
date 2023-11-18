@@ -8,153 +8,71 @@
 import Foundation
 
 class BigBannerService {
-    private let bigBanners: [Banner] = [
-       Banner (
-        image: "bigBannerGuessProduct",
+    private let bigBanners: [BigBanner] = [
+       BigBanner (
+        image: "dontWaitTheOrderBigBanner",
         stories: [
-            Stories(image: "bigBannerGuessProduct"),
-            Stories(image: "bigBannersOrderDodoCombo"),
-            Stories(image: "bigBannersPeopleMatters"),
-            Stories(image: "bigBannersOpenMoodEnergy"),
-            Stories(image: "bigBannerCodo"),
-            Stories(image: "bigBannersYrReviews")
+            Stories(image: "dontWaitPage1"),
+            Stories(image: "dontWaitPage2"),
+            Stories(image: "dontWaitPage3")
         ]
        ),
-       Banner(
-        image: "bigBannersOrderDodoCombo",
+       BigBanner(
+        image: "15OfTheMonthBigBanner",
         stories: [
-            Stories(image: "bigBannerGuessProduct"),
-            Stories(image: "bigBannersOrderDodoCombo"),
-            Stories(image: "bigBannersPeopleMatters"),
-            Stories(image: "bigBannersOpenMoodEnergy"),
-            Stories(image: "bigBannerCodo"),
-            Stories(image: "bigBannersYrReviews")
+            Stories(image: "15MonthPage1")
         ]
        ),
-       Banner(
-        image: "bigBannersPeopleMatters",
+       BigBanner(
+        image: "theFallBigBanner",
         stories: [
-            Stories(image: "bigBannerGuessProduct"),
-            Stories(image: "bigBannersOrderDodoCombo"),
-            Stories(image: "bigBannersPeopleMatters"),
-            Stories(image: "bigBannersOpenMoodEnergy"),
-            Stories(image: "bigBannerCodo"),
-            Stories(image: "bigBannersYrReviews")
+            Stories(image: "theFallPage1"),
+            Stories(image: "theFallPage2")
         ]
        ),
-       Banner(
-        image: "bigBannersOpenMoodEnergy",
+       BigBanner(
+        image: "250DevelopersBigBanner",
         stories: [
-            Stories(image: "bigBannerGuessProduct"),
-            Stories(image: "bigBannersOrderDodoCombo"),
-            Stories(image: "bigBannersPeopleMatters"),
-            Stories(image: "bigBannersOpenMoodEnergy"),
-            Stories(image: "bigBannerCodo"),
-            Stories(image: "bigBannersYrReviews")
+            Stories(image: "250Page1"),
+            Stories(image: "250Page2")
         ]
        ),
-       Banner(
-        image: "bigBannerCodo",
+       BigBanner(
+        image: "redMoodBigBanner",
         stories: [
-            Stories(image: "bigBannerGuessProduct"),
-            Stories(image: "bigBannersOrderDodoCombo"),
-            Stories(image: "bigBannersPeopleMatters"),
-            Stories(image: "bigBannersOpenMoodEnergy"),
-            Stories(image: "bigBannerCodo"),
-            Stories(image: "bigBannersYrReviews")
+            Stories(image: "redMoodPage1")
         ]
        ),
-       Banner (
-        image: "bigBannersYrReviews",
+       BigBanner(
+        image: "catMoodBigBanner",
         stories: [
-            Stories(image: "bigBannerGuessProduct"),
-            Stories(image: "bigBannersOrderDodoCombo"),
-            Stories(image: "bigBannersPeopleMatters"),
-            Stories(image: "bigBannersOpenMoodEnergy"),
-            Stories(image: "bigBannerCodo"),
-            Stories(image: "bigBannersYrReviews")
+            Stories(image: "catMoodPage1"),
+            Stories(image: "catMoodPage2")
         ]
        ),
-       Banner(
-        image: "newComboBigBanner",
+       BigBanner (
+        image: "eveningAtHomeBigBanner",
         stories: [
-            Stories(image: "bigBannerGuessProduct"),
-            Stories(image: "bigBannersOrderDodoCombo"),
-            Stories(image: "bigBannersPeopleMatters"),
-            Stories(image: "bigBannersOpenMoodEnergy"),
-            Stories(image: "bigBannerCodo"),
-            Stories(image: "bigBannersYrReviews")
+            Stories(image: "eveningPage1"),
+            Stories(image: "eveningPage2"),
+            Stories(image: "eveningPage3"),
+            Stories(image: "eveningPage4"),
+            Stories(image: "eveningPage5"),
+            Stories(image: "eveningPage6"),
+            Stories(image: "eveningPage7"),
+            Stories(image: "eveningPage8")
         ]
        ),
-       Banner(
-        image: "newPointsBigBanner",
+       BigBanner(
+        image: "hotAndGentleBigBanner",
         stories: [
-            Stories(image: "bigBannerGuessProduct"),
-            Stories(image: "bigBannersOrderDodoCombo"),
-            Stories(image: "bigBannersPeopleMatters"),
-            Stories(image: "bigBannersOpenMoodEnergy"),
-            Stories(image: "bigBannerCodo"),
-            Stories(image: "bigBannersYrReviews")
-        ]
-       ),
-       Banner(
-        image: "openMoodBigBanner",
-        stories: [
-            Stories(image: "bigBannerGuessProduct"),
-            Stories(image: "bigBannersOrderDodoCombo"),
-            Stories(image: "bigBannersPeopleMatters"),
-            Stories(image: "bigBannersOpenMoodEnergy"),
-            Stories(image: "bigBannerCodo"),
-            Stories(image: "bigBannersYrReviews")
-        ]
-       ),
-       Banner(
-        image: "orderComboBigBanner",
-        stories: [
-            Stories(image: "bigBannerGuessProduct"),
-            Stories(image: "bigBannersOrderDodoCombo"),
-            Stories(image: "bigBannersPeopleMatters"),
-            Stories(image: "bigBannersOpenMoodEnergy"),
-            Stories(image: "bigBannerCodo"),
-            Stories(image: "bigBannersYrReviews")
-        ]
-       ),
-       Banner(
-        image: "peopleImportantBigBanner",
-        stories: [
-            Stories(image: "bigBannerGuessProduct"),
-            Stories(image: "bigBannersOrderDodoCombo"),
-            Stories(image: "bigBannersPeopleMatters"),
-            Stories(image: "bigBannersOpenMoodEnergy"),
-            Stories(image: "bigBannerCodo"),
-            Stories(image: "bigBannersYrReviews")
-        ]
-       ),
-       Banner(
-        image: "schoolMatesLoveBigBanner",
-        stories: [
-            Stories(image: "bigBannerGuessProduct"),
-            Stories(image: "bigBannersOrderDodoCombo"),
-            Stories(image: "bigBannersPeopleMatters"),
-            Stories(image: "bigBannersOpenMoodEnergy"),
-            Stories(image: "bigBannerCodo"),
-            Stories(image: "bigBannersYrReviews")
-        ]
-       ),
-       Banner(
-        image: "storiesTeamWatchesBigBanner",
-        stories: [
-            Stories(image: "bigBannerGuessProduct"),
-            Stories(image: "bigBannersOrderDodoCombo"),
-            Stories(image: "bigBannersPeopleMatters"),
-            Stories(image: "bigBannersOpenMoodEnergy"),
-            Stories(image: "bigBannerCodo"),
-            Stories(image: "bigBannersYrReviews")
+            Stories(image: "hotGentlePage1"),
+            Stories(image: "hotGentlePage2")
         ]
        )
     ]
     
-    func fetchBigBanners() -> [Banner] {
+    func fetchBigBanners() -> [BigBanner] {
         bigBanners
     }
 }

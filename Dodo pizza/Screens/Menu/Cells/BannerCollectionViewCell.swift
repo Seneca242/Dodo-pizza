@@ -15,7 +15,7 @@ class BannerCollectionViewCell: UICollectionViewCell {
         stackView.axis = .horizontal
         stackView.spacing = 8
         stackView.alignment = .fill
-        stackView.distribution = .fillEqually
+        stackView.distribution = .fill
         return stackView
     }()
     
@@ -28,7 +28,7 @@ class BannerCollectionViewCell: UICollectionViewCell {
             top: 20,
             leading: 0,
             bottom: 20,
-            trailing: 0
+            trailing: 20
         )
         stackView.isLayoutMarginsRelativeArrangement = true
         return stackView
@@ -42,12 +42,7 @@ class BannerCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor(
-            red: 248/255,
-            green: 248/255,
-            blue: 255/255,
-            alpha: 1
-        )
+        backgroundColor = .white
         setupViews()
         setupConstraints()
     }

@@ -20,6 +20,9 @@ struct Product: Codable {
     var sizeDetail: String
     var price: Int
     var image: String
+    
     var quantity: Int = 1
 }
+
+
 
