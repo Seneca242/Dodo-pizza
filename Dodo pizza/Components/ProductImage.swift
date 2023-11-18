@@ -39,7 +39,7 @@ class ProductImageView: UIImageView {
         switch style {
             
         case .menu:
-            rate = 0.4
+            rate = 0.25
         case .detail:
             rate = 0.8
         case .cart:
